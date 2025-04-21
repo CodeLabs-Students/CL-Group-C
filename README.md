@@ -3,7 +3,7 @@
 
 ## 📚 Overview
 
-For the remainder of the front-end course, you will work in **groups of three** to design and build a full-featured Angular 18+ application. This is more than a static website — your project should be **dynamic, interactive**, and reflect real-world development practices.
+For the remainder of the front-end course, you will work in **groups of three** to design and build a full-featured Angular 19+ application. This is more than a static website — your project should be **dynamic, interactive**, and reflect real-world development practices.
 
 While creativity is encouraged, the main focus is **execution and delivery**. This is your chance to simulate working on a real dev team with clear expectations, structure, and professional habits.
 
