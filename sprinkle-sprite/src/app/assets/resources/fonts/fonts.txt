@@ -1,0 +1,4 @@
+//-----Main fonts-----//
+
+Font Name: DotGothic16
+Google Fonts URL: https://fonts.google.com/specimen/DotGothic16
