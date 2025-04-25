@@ -1,0 +1,128 @@
+{
+  "ice_cream_flavors": {
+    "1": {
+      "name": "Cherry Koopa Crunch",
+      "description": "Cherry base with chocolate shell & pixel sprinkles",
+      "price": 4.99,
+      "rarity": "Common"
+    },
+    "2": {
+      "name": "Mana Mint Chip",
+      "description": "Mint chip that \"restores stamina\"",
+      "price": 5.49,
+      "rarity": "Uncommon"
+    },
+    "3": {
+      "name": "Fire Flower Fudge",
+      "description": "Spicy chocolate fudge with red chili flakes",
+      "price": 5.99,
+      "rarity": "Rare"
+    },
+    "4": {
+      "name": "Blue Raspberry Blitz",
+      "description": "Electrifying blue raspberry swirls & sour stars",
+      "price": 4.79,
+      "rarity": "Common"
+    },
+    "5": {
+      "name": "Peach Princess Sorbet",
+      "description": "Light peach sorbet with edible glitter",
+      "price": 5.29,
+      "rarity": "Rare"
+    },
+    "6": {
+      "name": "Rainbow Road Ripple",
+      "description": "A mix of all flavors in a chaotic swirl",
+      "price": 6.49,
+      "rarity": "Legendary"
+    },
+    "7": {
+      "name": "Banana Kong Split",
+      "description": "Banana split with retro candy and chocolate joystick",
+      "price": 7.99,
+      "rarity": "Seasonal"
+    }
+  },
+  "sales": {
+    "1": {
+      "flavor_id": "1",
+      "date": "2025-04-17",
+      "quantity": 34,
+      "total_sales": 169.66
+    },
+    "2": {
+      "flavor_id": "2",
+      "date": "2025-04-17",
+      "quantity": 22,
+      "total_sales": 120.78
+    },
+    "3": {
+      "flavor_id": "3",
+      "date": "2025-04-18",
+      "quantity": 18,
+      "total_sales": 107.82
+    },
+    "4": {
+      "flavor_id": "5",
+      "date": "2025-04-19",
+      "quantity": 25,
+      "total_sales": 132.25
+    },
+    "5": {
+      "flavor_id": "6",
+      "date": "2025-04-20",
+      "quantity": 12,
+      "total_sales": 77.88
+    },
+    "6": {
+      "flavor_id": "7",
+      "date": "2025-04-21",
+      "quantity": 10,
+      "total_sales": 79.9
+    }
+  },
+  "staff": {
+    "1": {
+      "name": "Lexi",
+      "role": "Game Barista",
+      "favorite_flavor_id": "2"
+    },
+    "2": {
+      "name": "Jordan",
+      "role": "Retro Cart Operator",
+      "favorite_flavor_id": "6"
+    },
+    "3": {
+      "name": "Ash",
+      "role": "Arcade Manager",
+      "favorite_flavor_id": "3"
+    },
+    "4": {
+      "name": "Sam \u201cGlitch\u201d",
+      "role": "Ice Cream Hacker",
+      "favorite_flavor_id": "4"
+    }
+  },
+  "loyalty_levels": {
+    "1": {
+      "level_name": "Newbie Nibbler",
+      "points_required": 0,
+      "reward_description": "Sticker Pack"
+    },
+    "2": {
+      "level_name": "Pixel Pal",
+      "points_required": 100,
+      "reward_description": "Free Classic Scoop"
+    },
+    "3": {
+      "level_name": "8-Bit Boss",
+      "points_required": 250,
+      "reward_description": "Free Topping + Drink"
+    },
+    "4": {
+      "level_name": "Final Flavor",
+      "points_required": 500,
+      "reward_description": "Custom Flavor Creation Experience"
+    }
+  }
+}
