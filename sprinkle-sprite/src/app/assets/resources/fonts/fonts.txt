@@ -2,3 +2,6 @@
 
 Font Name: DotGothic16
 Google Fonts URL: https://fonts.google.com/specimen/DotGothic16
+
+Font Name: PressStart2P
+Google Fonts URL: https://fonts.google.com/specimen/Press+Start+2P
