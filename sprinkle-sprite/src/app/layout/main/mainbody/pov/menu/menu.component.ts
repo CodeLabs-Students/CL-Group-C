@@ -6,6 +6,15 @@ import { Component } from '@angular/core';
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
-export class MenuComponent {
 
+export class MenuComponent {
+  count: number = 0;
+
+  increase() {
+    this.count++;
+  }
+
+  decrease() {
+    this.count--;
+  }
 }
