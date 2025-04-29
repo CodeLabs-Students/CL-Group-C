@@ -1,4 +1,11 @@
-<div id="vanilla">
+<div id="card-container">
+  <app-card *ngFor="let card of cards" [title]="card.title" [content]="card.content"></app-card>
+  <mat-card>
+    <mat-card-title> {{title}} </title></mat-card-title>
+  </mat-card>
+  <mat-card-content>
+    <p>{{content}}</p>
+  </mat-card-content>
   <button (click)='increase()'></button>
   <button (click)='decrease()'></button>
   <button>checkout</button>
