@@ -1,0 +1,38 @@
+/* Basic reset for margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #8df7eb; /* Light teal background */
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  gap: 20px; /* Space between the links */
+}
+
+nav a {
+  text-decoration: none; /* Removes underline from links */
+  color: #1b8da3; /* dark teal text color */
+  font-family: 'PressStart 2P', cursive; /* Custom font */
+  font-size: 18px; /* Font size for the links */
+  text-transform: uppercase; /* Make links uppercase */
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff; /* White text on hover */
+  background-color: #db90b3; /* pink background on hover */
+  border-color: #5dbed2; /* Border turns teal on hover */
+  border-radius: 5px; /* Rounded corners */
+}
+
