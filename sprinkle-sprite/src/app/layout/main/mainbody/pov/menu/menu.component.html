@@ -1,23 +1,16 @@
-<div id="card-container">
-  <app-card *ngFor="let card of cards" [title]="card.title" [content]="card.content"></app-card>
-  <mat-card>
-    <mat-card-title> {{title}} </title></mat-card-title>
-  </mat-card>
-  <mat-card-content>
-    <p>{{content}}</p>
-  </mat-card-content>
+<div>
+  <button (click)="increase()">Increase</button>
+  <button (click)="decrease()">Decrease</button>
+  <button>Checkout</button>
+</div>
+
+<div>
   <button (click)='increase()'></button>
   <button (click)='decrease()'></button>
   <button>checkout</button>
 </div>
 
-<div id="chocolate">
-  <button (click)='increase()'></button>
-  <button (click)='decrease()'></button>
-  <button>checkout</button>
-</div>
-
-<div id="strawberry">
+<div>
   <button (click)='increase()'></button>
   <button (click)='decrease()'></button>
   <button>checkout</button>
