@@ -36,12 +36,12 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 1.5rem;
   border: 2px solid #2d3a4b;
   background: #fcc9e7;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.5rem;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
   font-family: 'DotGothic16', monospace;
@@ -58,7 +58,8 @@
 }
 
 .account-button img {
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
   image-rendering: pixelated;
+  flex-shrink: 0;
 }
