@@ -8,35 +8,19 @@ import { Component } from '@angular/core';
 })
 
 export class MenuComponent {
-  title: string = 'My Card Title';
-  content: string = 'This is some content for the card.';
-  cards = [
-    { title: 'Card 1', content: 'Content for card 1' },
-    { title: 'Card 2', content: 'Content for card 2' },
-    // Add more cards as needed
-  ];
+  count: number = 0;
 
   increase() {
-    // Logic for increasing something
+    this.count++;
   }
 
   decrease() {
-    // Logic for decreasing something
+    this.count--;
   }
 
-  // count: number = 0;
-
-  // increase() {
-  //   this.count++;
-  // }
-
-  // decrease() {
-  //   this.count--;
-  // }
-
-  // cards = [
-  //   {title: 'Card 1', content: 'ice cream'},
-  //   {title: 'Card 2', content: 'ice cream'},
-  //   {title: 'Card 3', content: 'ice cream'},
-  // ]
+  cards = [
+    {title: 'Card 1', content: 'ice cream'},
+    {title: 'Card 2', content: 'ice cream'},
+    {title: 'Card 3', content: 'ice cream'},
+  ]
 }
