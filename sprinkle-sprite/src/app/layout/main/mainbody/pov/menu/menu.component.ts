@@ -18,9 +18,4 @@ export class MenuComponent {
     this.count--;
   }
 
-  cards = [
-    {title: 'Card 1', content: 'ice cream'},
-    {title: 'Card 2', content: 'ice cream'},
-    {title: 'Card 3', content: 'ice cream'},
-  ]
 }
