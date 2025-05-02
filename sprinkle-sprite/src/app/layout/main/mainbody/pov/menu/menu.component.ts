@@ -8,10 +8,14 @@ import { Component } from '@angular/core';
 })
 
 export class MenuComponent {
+ 
+  Flavors: string = '';
+  id!: number;
+
   count: number = 0;
 
   increase() {
-    this.count++;
+    this.count++; 
   }
 
   decrease() {
