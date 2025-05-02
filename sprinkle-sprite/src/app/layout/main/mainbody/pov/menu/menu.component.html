@@ -1,20 +1,21 @@
-<div>
-  <button (click)="increase()">Increase</button>
-  {{count}}
-  <button (click)="decrease()">Decrease</button>
-  <button>Checkout</button>
-</div>
-<br>
-<div>
-  <button (click)='increase()'></button>
-  {{count}}
-  <button (click)='decrease()'></button>
-  <button>checkout</button>
-</div>
-<br>
-<div>
-  <button (click)='increase()'></button>
-  {{count}}
-  <button (click)='decrease()'></button>
-  <button>checkout</button>
+
+<ul>
+    @for (card of paginatedCards; track card.id) {
+        <li>
+            <div class="card">
+            <h3>{{ card.title }}</h3>
+            <p> {{card.description}} </p>
+            </div>
+            <button (click)='increase()'></button>
+            {{count}}
+            <button (click)='decrease()'></button>
+            <button>Checkout</button>
+        </li>
+    }
+</ul>
+
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= (cards.length / cardsPerPage)">Next</button>
 </div>
