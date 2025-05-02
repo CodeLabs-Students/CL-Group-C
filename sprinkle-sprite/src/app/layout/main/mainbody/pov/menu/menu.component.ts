@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
   export interface Card {
     id: number;
@@ -9,13 +10,13 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-menu',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 
 export class MenuComponent {
- 
+
 
   cards: Card[] = [];
   currentPage = 1;
@@ -49,7 +50,7 @@ export class MenuComponent {
   count: number = 0;
 
   increase() {
-    this.count++; 
+    this.count++;
   }
 
   decrease() {
