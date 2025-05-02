@@ -51,6 +51,12 @@
   transition: all 0.2s ease-in-out;
 }
 
+.account-button:hover {
+  background-color: #f8e791;
+  border-color: #baf2d8;
+  transform: translateY(-1px);
+}
+
 .account-button img {
   width: 48px;
   height: 48px;
