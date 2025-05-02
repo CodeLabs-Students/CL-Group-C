@@ -7,6 +7,7 @@
   background-color: #F3C5FF;
   padding: 2rem;
   box-sizing: border-box;
+  color: #1B4568;
 }
 
 .hero-content {
@@ -29,7 +30,7 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #222;
+  color: #1B4568;
 }
 
 .info {
@@ -41,12 +42,13 @@
   padding: 0.75rem 2rem;
   background-color: #FCC9E7;
   border: none;
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Press Start 2P';
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   border-radius: 6px;
   transition: background-color 0.2s;
+  color: #1B4568;
 }
 
 .buy-btn:hover {
