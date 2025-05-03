@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, inject } from '@angular/core';
+
 
   export interface Card {
     id: number;
@@ -15,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 })
 
 export class MenuComponent {
- 
+
 
   cards: Card[] = [];
   currentPage = 1;
@@ -48,11 +48,11 @@ export class MenuComponent {
 
   count: number = 0;
 
-  increase() {
+  increase(card: Card) {
     this.count++; 
   }
 
-  decrease() {
+  decrease(card: Card) {
     this.count--;
   }
 

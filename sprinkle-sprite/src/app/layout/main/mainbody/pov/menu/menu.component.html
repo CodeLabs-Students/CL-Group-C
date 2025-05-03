@@ -6,9 +6,9 @@
             <h3>{{ card.title }}</h3>
             <p> {{card.description}} </p>
             </div>
-            <button (click)='increase()'></button>
+            <button (click)='increase(card)'></button>
             {{count}}
-            <button (click)='decrease()'></button>
+            <button (click)='decrease(card)'></button>
             <button>Checkout</button>
         </li>
     }
