@@ -1,0 +1,11 @@
+current color pallet
+
+#8DF7EB
+#F3C5FF
+#FCC9E7
+#1B4568
+#fff3eb
+#c6f0f2
+#d9d9d9
+#2b2b2b
+#baf2d8
