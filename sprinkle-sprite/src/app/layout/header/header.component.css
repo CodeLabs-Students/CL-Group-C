@@ -34,6 +34,7 @@ nav a:hover {
   color: #fff; /* White text on hover */
   background-color: #db90b3; /* pink background on hover */
   border-color: #1B4568; /* Border turns biscay blue on hover */
-  border-radius: 5px; /* Rounded corners */
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
 }
 
