@@ -29,13 +29,24 @@
   <div class="menu-content">
     <ul class="menu-list">
       @for (card of paginatedCards; track card.id) {
-        <li class="menu-item">
+        <li
+          class="menu-item"
+          [class.expanded]="card.expanded"
+          (click)="toggleCard(card)"
+        >
           <div class="card">
             <h3 [title]="card.title">{{ card.title }}</h3>
             <p [title]="card.description">{{ card.description }}</p>
+
+            @if (card.expanded) {
+              <div class="expanded-info">
+                <p><strong>Price:</strong> ${{ card.price }}</p>
+                <p><strong>Rarity:</strong> {{ card.rarity }}</p>
+              </div>
+            }
           </div>
 
-          <div class="card-controls">
+          <div class="card-controls" (click)="$event.stopPropagation()">
             <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
             <span>{{ card.count }}</span>
             <button (click)="increase(card)">+</button>
@@ -45,6 +56,7 @@
       }
     </ul>
   </div>
+
     <div class="pagination">
       <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
       <span>Page {{ currentPage }}</span>

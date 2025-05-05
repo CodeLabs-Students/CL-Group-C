@@ -9,6 +9,7 @@ import menuData from 'src/app/data/pixel_creamery_firebase_export.json';
   price: number;
   rarity: string;
   count: number;
+  expanded?: boolean;
   }
 
 @Component({
@@ -68,4 +69,13 @@ export class MenuComponent {
       card.count--;
     }
   }
+  toggleCard(card: Card) {
+    const isAlreadyExpanded = card.expanded;
+  // Collapse all cards first
+  this.cards.forEach(container => container.expanded = false);
+
+  // Expand the clicked card
+  if (!isAlreadyExpanded) {
+    card.expanded = true;
+  }}
 }
