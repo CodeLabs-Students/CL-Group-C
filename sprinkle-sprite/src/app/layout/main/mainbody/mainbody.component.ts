@@ -4,7 +4,7 @@ import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-mainbody',
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet],
   templateUrl: './mainbody.component.html',
   styleUrl: './mainbody.component.css'
 })
