@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import menuData from 'src/app/data/pixel_creamery_firebase_export.json';
 
   export interface Card {
-    id: number;
-    title: string;
-    description: string;
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  rarity: string;
+  count: number;
   }
 
 @Component({
@@ -17,22 +20,30 @@ import { RouterModule } from '@angular/router';
 
 export class MenuComponent {
 
-
   cards: Card[] = [];
-  currentPage = 1;
-  cardsPerPage = 6;
 
-  get paginatedCards() {
-    const start = (this.currentPage - 1) * this.cardsPerPage;
-    return this.cards.slice(start, start + this.cardsPerPage);
-  }
+  currentPage = 1;
+  cardsPerPage = 8;
 
   ngOnInit() {
-    this.cards = Array.from({ length: 20 }, (_, i) => ({
-      id: i + 1,
-      title: `Card ${i + 1}`,
-      description: `Description fror card ${i + 1}`,
-    }));
+    fetch('assets/data/pixel_creamery_firebase_export.json')
+      .then(res => res.json())
+      .then(data => {
+        const rawFlavors = data.ice_cream_flavors;
+
+        this.cards = Object.entries(rawFlavors).map(([id, flavor]: [string, any]) => ({
+          id: Number(id),
+          title: flavor.name,
+          description: flavor.description,
+          price: flavor.price,
+          rarity: flavor.rarity,
+          count: 0
+        }));
+      });
+  }
+  get paginatedCards(): Card[] {
+    const start = (this.currentPage - 1) * this.cardsPerPage;
+    return this.cards.slice(start, start + this.cardsPerPage);
   }
 
   nextPage() {
@@ -47,14 +58,14 @@ export class MenuComponent {
     }
   }
 
-  count: number = 0;
 
-  increase() {
-    this.count++;
+  increase(card: Card) {
+    card.count++;
   }
 
-  decrease() {
-    this.count--;
+  decrease(card: Card) {
+    if (card.count > 0) {
+      card.count--;
+    }
   }
-
 }
