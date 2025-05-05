@@ -1,0 +1,40 @@
+/* Basic reset for margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #8df7eb; /* Light teal background */
+  padding: 20px;
+  text-align: center;
+  border-bottom: #1B4568 4px solid; /* Biscay border */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  gap: 20px; /* Space between the links */
+}
+
+nav a {
+  text-decoration: none; /* Removes underline from links */
+  color: #1B4568; /* Biscay text color */
+  font-family: 'Press Start 2P'; /* Custom font */
+  font-size: 18px; /* Font size for the links */
+  text-transform: uppercase; /* Make links uppercase */
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff; /* White text on hover */
+  background-color: #db90b3; /* pink background on hover */
+  border-color: #1B4568; /* Border turns biscay blue on hover */
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
+}
+

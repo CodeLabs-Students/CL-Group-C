@@ -1,1 +1,67 @@
-<p>menu works!</p>
+
+<!--<ul>
+    @for (card of paginatedCards; track card.id) {
+        <li>
+            <div class="card">
+            <h3>{{ card.title }}</h3>
+            <p> {{card.description}} </p>
+            </div>
+            <button (click)='increase()'></button>
+            {{count}}
+            <button (click)='decrease()'></button>
+            <button>Checkout</button>
+        </li>
+    }
+</ul>
+
+<div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= (cards.length / cardsPerPage)">Next</button>
+</div>
+-->
+<main class="menu">
+  <div class="menu-hero">
+    <h2>Our Flavors</h2>
+    <p>Choose your favorite sprinkle surprise!</p>
+  </div>
+
+  <div class="menu-content">
+    <ul class="menu-list">
+      @for (card of paginatedCards; track card.id) {
+        <li
+          class="menu-item"
+          [class.expanded]="card.expanded"
+          (click)="toggleCard(card)"
+        >
+          <div class="card">
+            <h3 [title]="card.title">{{ card.title }}</h3>
+            <p [title]="card.description">{{ card.description }}</p>
+
+            @if (card.expanded) {
+              <div class="expanded-info">
+                <p><strong>Price:</strong> ${{ card.price }}</p>
+                <p><strong>Rarity:</strong> {{ card.rarity }}</p>
+              </div>
+            }
+          </div>
+
+          <div class="card-controls" (click)="$event.stopPropagation()">
+            <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
+            <span>{{ card.count }}</span>
+            <button (click)="increase(card)">+</button>
+            <button class="checkout-button">Checkout</button>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage >= (cards.length / cardsPerPage)">Next</button>
+    </div>
+
+</main>
+
