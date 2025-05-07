@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.css',
 })
+
 export class CreateUserComponent {
   username = signal('');
   email = signal('');
@@ -18,23 +19,34 @@ export class CreateUserComponent {
   constructor(private router: Router) {}
 
   handleCreateAccount(): void {
-    if (
-      this.username() &&
-      this.email() &&
-      this.password() &&
-      this.password() === this.confirmPassword()
-    ) {
-      const user = {
-        username: this.username(),
-        email: this.email(),
-        password: this.password(), // NOTE: insecure for production, fine for testing
-      };
+    const usernameVal = this.username();
+    const emailVal = this.email();
+    const passwordVal = this.password();
+    const confirmPasswordVal = this.confirmPassword();
 
-      localStorage.setItem('user', JSON.stringify(user));
-      alert('Account created! Please log in.');
-      this.router.navigate(['/login']);
-    } else {
+    if (!usernameVal || !emailVal || !passwordVal || passwordVal !== confirmPasswordVal) {
       alert('Please fill all fields and make sure passwords match.');
+      return;
     }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+    const usernameExists = users.some((u: any) => u.username === usernameVal);
+    if (usernameExists) {
+      alert('Username already taken. Please choose another.');
+      return;
+    }
+
+    const newUser = {
+      username: usernameVal,
+      email: emailVal,
+      password: passwordVal, // NOTE: plaintext for testing only
+    };
+
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('Account created! Please log in.');
+    this.router.navigate(['/login']);
   }
 }

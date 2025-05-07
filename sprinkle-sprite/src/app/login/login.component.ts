@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
@@ -11,12 +11,16 @@ import { AuthService } from '../auth/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  username = '';
-  password = '';
+  username = signal('');
+  password = signal('');
 
   constructor(private auth: AuthService) {}
 
-  handleLogin() {
-    this.auth.login(this.username, this.password);
-  }
-}
+  handleLogin(): void {
+    const success = this.auth.login(this.username(), this.password());
+
+    if (!success) {
+      this.username.set('');
+      this.password.set('');
+    }
+}}
