@@ -1,0 +1,46 @@
+<div class="login-hero">
+  <div class="login-container">
+    <h2>🎉 Create Your Sprinkle Sprite Account 🎉</h2>
+
+    <form (submit)="handleCreateAccount()">
+      <label for="username">Username:</label>
+      <input
+        id="username"
+        type="text"
+        required
+        (input)="username.set($any($event.target).value)"
+      />
+
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        required
+        (input)="email.set($any($event.target).value)"
+      />
+
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        type="password"
+        required
+        (input)="password.set($any($event.target).value)"
+      />
+
+      <label for="confirm">Confirm Password:</label>
+      <input
+        id="confirm"
+        type="password"
+        required
+        (input)="confirmPassword.set($any($event.target).value)"
+      />
+
+      <button type="submit">Create Account</button>
+
+      <p class="note">
+        Already have an account?
+        <a [routerLink]="['/login']">Back to Login</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -22,4 +22,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./login/login.component').then((m) => m.LoginComponent),
   },
+  {
+    path: 'create-account',
+    loadComponent: () =>
+      import('./create-user/create-user.component').then(m => m.CreateUserComponent)
+  },
 ];
