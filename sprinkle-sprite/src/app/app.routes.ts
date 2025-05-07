@@ -27,4 +27,5 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./create-user/create-user.component').then(m => m.CreateUserComponent)
   },
+
 ];
