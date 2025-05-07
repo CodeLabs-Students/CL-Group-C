@@ -38,6 +38,24 @@
   font-family: 'Press Start 2P', monospace;
   color: #1B4568;
 }
+.note {
+  margin: 16px 0 8px;
+  font-size: 10px;
+  color: #1B4568;
+  font-family: 'Press Start 2P';
+  text-align: center;
+  line-height: 1.6;
+}
+
+.note a {
+  color: #1B4568;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.note a:hover {
+  color: #db90b3; /* Your main pink theme color */
+}
 
 .login-container button {
   width: 100%;
@@ -48,7 +66,6 @@
   border: 3px solid #1B4568;
   font-size: 14px;
   font-family: 'Press Start 2P', monospace;
-  cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 3px 3px #2b2b2b;
 }
@@ -58,9 +75,11 @@
   box-shadow: 2px 2px #000;
 }
 
-/* Optional link text */
 .note {
-  margin-top: 20px;
+  margin: 16px 0 8px;
   font-size: 10px;
-  color: #fff;
+  color: #1B4568;
+  font-family: 'Press Start 2P';
+  text-align: center;
+  line-height: 1.6;
 }
