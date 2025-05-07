@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
+
 
 @Component({
   selector: 'app-header',
@@ -9,5 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  auth = inject(AuthService);
 
+  logout() {
+    this.auth.logout();
+  }
 }

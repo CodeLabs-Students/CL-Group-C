@@ -5,18 +5,21 @@ import { AccountComponent } from './layout/main/mainbody/pov/account/account.com
 import { CheckoutComponent } from './layout/main/mainbody/pov/checkout/checkout.component';
 import { MenuComponent } from './layout/main/mainbody/pov/menu/menu.component';
 
-
 export const routes: Routes = [
   {
-
-      path: '',
-      component: MainbodyComponent,
-      children: [
-        { path: '', component: HomeComponent },              // '/'
-        { path: 'home', component: HomeComponent },
-        { path: 'menu', component: MenuComponent },
-        { path: 'checkout', component: CheckoutComponent },
-        { path: 'account', component: AccountComponent },
-      ]
-}
-]
+    path: '',
+    component: MainbodyComponent,
+    children: [
+      { path: '', component: HomeComponent }, // '/'
+      { path: 'home', component: HomeComponent },
+      { path: 'menu', component: MenuComponent },
+      { path: 'checkout', component: CheckoutComponent },
+      { path: 'account', component: AccountComponent },
+    ],
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./login/login.component').then((m) => m.LoginComponent),
+  },
+];
