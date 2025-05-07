@@ -2,11 +2,12 @@
   <div class="account-box">
     <div class="account-header">PROFILE</div>
 
-    <button class="account-button">
-      <img src="assets/resources/icons/account_Icon.png" alt="Account icon" />
-
-      LOGIN
-    </button>
+    <a routerLink="/login">
+      <button class="account-button" (click)="goToLogin()">
+        <img src="assets/resources/icons/account_Icon.png" alt="Account icon" />
+        LOGIN
+      </button>
+    </a>
 
     <button class="account-button">
       <img src="assets/resources/icons/heart_selected.png" alt="Favorites" />
