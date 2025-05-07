@@ -38,6 +38,7 @@ export class MenuComponent {
           description: flavor.description,
           price: flavor.price,
           rarity: flavor.rarity,
+          vip: "vip_Icon",
           count: 0
         }));
       });

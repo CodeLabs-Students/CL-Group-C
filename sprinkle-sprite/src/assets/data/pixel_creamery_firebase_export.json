@@ -4,37 +4,43 @@
     "name": "Cherry Koopa Crunch",
     "description": "Cherry base with chocolate shell & pixel sprinkles",
     "price": 4.99,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "2": {
     "name": "Mana Mint Chip",
     "description": "Mint chip that \"restores stamina\"",
     "price": 5.49,
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/uncommon_Icon.png"
   },
   "3": {
     "name": "Fire Flower Fudge",
     "description": "Spicy chocolate fudge with red chili flakes",
     "price": 5.99,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "4": {
     "name": "Blue Raspberry Blitz",
     "description": "Electrifying blue raspberry swirls & sour stars",
     "price": 4.79,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "5": {
     "name": "Peach Princess Sorbet",
     "description": "Light peach sorbet with edible glitter",
     "price": 5.29,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "6": {
     "name": "Rainbow Road Ripple",
     "description": "A mix of all flavors in a chaotic swirl",
     "price": 6.49,
-    "rarity": "Legendary"
+    "rarity": "Legendary",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/legendary_Icon.png"
   },
   "7": {
     "name": "Banana Kong Split",
@@ -46,109 +52,127 @@
     "name": "Pixel Peach Punch",
     "description": "Punchy peach with pixelated candy bites",
     "price": 5.19,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "9": {
     "name": "Luigi Lime Chill",
     "description": "Smooth lime blend that keeps you cool under pressure",
     "price": 4.89,
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "vip":"/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/uncommon_Icon.png"
   },
   "10": {
     "name": "Toadstool Toffee Twist",
     "description": "Toffee ribbon with caramel mushrooms",
     "price": 6.25,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "11": {
     "name": "Starman Citrus Burst",
     "description": "Hyper-charged citrus flavors with sparkle dust",
     "price": 5.59,
-    "rarity": "Legendary"
+    "rarity": "Legendary",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/legendary_Icon.png"
   },
   "12": {
     "name": "Chocolate Overclock",
     "description": "Triple fudge overload with choco-bit chips",
     "price": 6.99,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "13": {
     "name": "Bittersweet Boss Battle",
     "description": "Dark chocolate and salted caramel swirl",
     "price": 5.89,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "14": {
     "name": "Yoshi Eggnog Swirl",
     "description": "Creamy eggnog with candy shell crunch",
     "price": 5.99,
-    "rarity": "Seasonal"
+    "rarity": "Seasonal",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/seasonal_Icon.png"
   },
   "15": {
     "name": "Glitchy Grape Byte",
     "description": "Grape sorbet with digital candy shards",
     "price": 4.75,
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "vip":"/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/uncommon_Icon.png"
   },
   "16": {
     "name": "Coin Collector Crunch",
     "description": "Gold caramel coin chips in vanilla base",
     "price": 5.49,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "17": {
     "name": "Matcha Mushroom Melt",
     "description": "Earthy matcha with marshmallow mushroom caps",
     "price": 5.99,
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/uncommon_Icon.png"
   },
   "18": {
     "name": "Bubble Bobble Berry",
     "description": "Bubbly berry blast with fizzy candy pops",
     "price": 4.69,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "19": {
     "name": "Neon Nights Vanilla",
     "description": "Classic vanilla with glowing neon swirl",
     "price": 4.49,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "20": {
     "name": "Wario Walnut Smash",
     "description": "Heavy-duty walnut crunch with mischief caramel",
     "price": 6.79,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "21": {
     "name": "1-UP Pistachio Pixel",
     "description": "Pistachio cream with green pixel bits",
     "price": 5.29,
-    "rarity": "Uncommon"
+    "rarity": "Uncommon",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/uncommon_Icon.png"
   },
   "22": {
     "name": "Ice Cap Coffee Crash",
     "description": "Frozen coffee chunks with espresso swirl",
     "price": 5.99,
-    "rarity": "Legendary"
+    "rarity": "Legendary",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/legendary_Icon.png"
   },
   "23": {
     "name": "Donut Plains Delight",
     "description": "Frosted donut ice cream with sprinkled terrain chunks",
     "price": 5.55,
-    "rarity": "Common"
+    "rarity": "Common",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/common_Icon.png"
   },
   "24": {
     "name": "Strawberry Save Point",
     "description": "Strawberry with a freeze-frame flavor finish",
     "price": 4.89,
-    "rarity": "Rare"
+    "rarity": "Rare",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/rare_icon.png"
   },
   "25": {
     "name": "Game Over Gooey Cake",
     "description": "Gooey cake swirl with brownie death bites",
     "price": 6.99,
-    "rarity": "Seasonal"
+    "rarity": "Seasonal",
+    "vip": "/Users/student/CL-Group-C-7/sprinkle-sprite/src/assets/resources/vip_Icons/seasonal_Icon.png"
   }
 }
 
