@@ -11,21 +11,30 @@ export class AuthService {
 
   private router = inject(Router);
 
-  login(username: string, password: string): void {
-    if (username && password) {
-      const fakeToken = 'sprinkle123token';
+  login(username: string, password: string): boolean {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const foundUser = users.find((u: any) => u.username === username);
 
-      this._token.set(fakeToken);
-      this._username.set(username);
-
-      localStorage.setItem('token', fakeToken);
-      localStorage.setItem('username', username);
-
-      this.router.navigate(['/home']);
-    } else {
-      alert('Login failed — missing credentials');
+    if (!foundUser) {
+      alert('User not found');
+      return false;
     }
+
+    if (foundUser.password !== password) {
+      alert('Password incorrect');
+      return false;
+    }
+
+    const token = 'sprinkle123token';
+    this._token.set(token);
+    this._username.set(username);
+    localStorage.setItem('token', token);
+    localStorage.setItem('username', username);
+
+    this.router.navigate(['/home']);
+    return true;
   }
+
 
   logout(): void {
     this._token.set(null);
