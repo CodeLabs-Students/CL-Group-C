@@ -27,4 +27,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./create-user/create-user.component').then(m => m.CreateUserComponent)
   },
+  {
+    path: 'seed',
+    loadComponent: () => import('./seed-data/seed-data.component').then(m => m.SeedDataComponent)
+  }
 ];
