@@ -12,8 +12,11 @@
 
   <!--user info area-->
   <div class="user-info">
-    <p class="username">Welcome: <strong>{{ auth.username() }}</strong></p>
-    <p class="role">Role: <em>VIP Placeholder</em></p>
+    <div class="user-text">
+      <p class="username">Welcome: <strong>{{ auth.username() }}</strong></p>
+      <p class="role">Role: <em>VIP Placeholder</em></p>
+    </div>
     <button class="logout-btn" (click)="logout()">Logout</button>
   </div>
-</header>
+
+  </header>
