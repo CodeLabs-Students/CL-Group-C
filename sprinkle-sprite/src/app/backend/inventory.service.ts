@@ -16,10 +16,9 @@ export interface Flavor {
 export class InventoryService {
   private firestore: Firestore = inject(Firestore); // Using Angular's new inject()
 
-  constructor() {}
 
   getFlavors(): Observable<Flavor[]> {
-    const flavorsRef = collection(this.firestore, 'flavors'); // 'flavors' = your Firestore collection name
+    const flavorsRef = collection(this.firestore, 'inventory'); // 'flavors' = your Firestore collection name
     return collectionData(flavorsRef, { idField: 'id' }) as Observable<Flavor[]>;
   }
 }

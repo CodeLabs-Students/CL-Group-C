@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import menuData from 'src/app/data/pixel_creamery_firebase_export.json';
+import { InventoryService, Flavor } from '../../../../../backend/inventory.service';
+
 
   export interface Card {
   id: number;
@@ -19,28 +20,25 @@ import menuData from 'src/app/data/pixel_creamery_firebase_export.json';
   styleUrl: './menu.component.css'
 })
 
-export class MenuComponent {
-
+export class MenuComponent implements OnInit {
+  constructor(private inventoryService: InventoryService) {}
   cards: Card[] = [];
 
   currentPage = 1;
   cardsPerPage = 8;
 
-  ngOnInit() {
-    fetch('assets/data/pixel_creamery_firebase_export.json')
-      .then(res => res.json())
-      .then(data => {
-        const rawFlavors = data.ice_cream_flavors;
-
-        this.cards = Object.entries(rawFlavors).map(([id, flavor]: [string, any]) => ({
-          id: Number(id),
-          title: flavor.name,
-          description: flavor.description,
-          price: flavor.price,
-          rarity: flavor.rarity,
-          count: 0
-        }));
-      });
+  ngOnInit(): void {
+    this.inventoryService.getFlavors().subscribe((data: Flavor[]) => {
+      console.log('🔥 Firestore data:', data);
+      this.cards = data.map((flavor, index) => ({
+        id: index + 1,
+        title: flavor.name,
+        description: flavor.description,
+        price: flavor.price,
+        rarity: flavor.rarity,
+        count: 0
+      }));
+    });
   }
   get paginatedCards(): Card[] {
     const start = (this.currentPage - 1) * this.cardsPerPage;
