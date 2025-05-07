@@ -29,7 +29,6 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.inventoryService.getFlavors().subscribe((data: Flavor[]) => {
-      console.log('🔥 Firestore data:', data);
       this.cards = data.map((flavor, index) => ({
         id: index + 1,
         title: flavor.name,

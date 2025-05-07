@@ -14,11 +14,11 @@ export interface Flavor {
   providedIn: 'root'
 })
 export class InventoryService {
-  private firestore: Firestore = inject(Firestore); // Using Angular's new inject()
+  private firestore: Firestore = inject(Firestore);
 
 
   getFlavors(): Observable<Flavor[]> {
-    const flavorsRef = collection(this.firestore, 'inventory'); // 'flavors' = your Firestore collection name
+    const flavorsRef = collection(this.firestore, 'inventory'); // 'inventory' = your Firestore collection name
     return collectionData(flavorsRef, { idField: 'id' }) as Observable<Flavor[]>;
   }
 }
