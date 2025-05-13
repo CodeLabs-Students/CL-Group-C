@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { ShopService } from '../sharedservices/shop.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-vip-rewards',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './vip-rewards.component.html',
   styleUrl: './vip-rewards.component.css'
 })

@@ -1,1 +1,14 @@
-<p>vip-rewards works!</p>
+<h2>🔥 Debug Loyalty Data</h2>
+
+<ul>
+  @for (level of loyaltyLevels(); track level.level_name) {
+  <li>
+    <strong>{{ level.level_name }}</strong> –
+    {{ level.points_required }} XP –
+    {{ level.reward_description }}
+  </li>
+
+
+  }
+</ul>
+

@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject} from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -30,7 +30,7 @@ export class ShopService {
   // Loyalty levels from firestore
   readonly loyaltyLevels = toSignal(
     collectionData(collection(this.firestore, 'loyalty_levels'), {
-      idField: 'id' // Optional: remove if you don’t need Firestore doc IDs
+      idField: 'id'
     }) as Observable<LoyaltyLevel[]>
   );
 }
