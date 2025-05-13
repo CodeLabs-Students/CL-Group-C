@@ -18,15 +18,10 @@ export const routes: Routes = [
 
     ],
   },
-  {
-    path: 'login',
-    loadComponent: () =>
-      import('./login/login.component').then((m) => m.LoginComponent),
+  { path: 'login', loadComponent: () => import('./login/login.component').then((m) => m.LoginComponent),
   },
-  {
-    path: 'create-account',
-    loadComponent: () =>
-      import('./create-user/create-user.component').then(m => m.CreateUserComponent)
+  { path: 'create-account', loadComponent: () => import('./create-user/create-user.component').then(m => m.CreateUserComponent)
   },
+  { path: 'vip-rewards', loadComponent: () => import('./rewards/vip-rewards.component').then(m => m.VipRewardsComponent) },
 
 ];
