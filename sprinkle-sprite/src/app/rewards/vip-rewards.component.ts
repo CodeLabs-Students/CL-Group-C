@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ShopService } from '../sharedservices/shop.service';
 
 @Component({
   selector: 'app-vip-rewards',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './vip-rewards.component.css'
 })
 export class VipRewardsComponent {
-
+  private shop = inject(ShopService);
+  loyaltyLevels = this.shop.loyaltyLevels;
 }
