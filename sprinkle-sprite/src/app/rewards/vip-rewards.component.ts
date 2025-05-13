@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ShopService } from '../sharedservices/shop.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-vip-rewards',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './vip-rewards.component.html',
   styleUrl: './vip-rewards.component.css'
 })

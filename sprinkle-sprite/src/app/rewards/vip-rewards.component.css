@@ -1,0 +1,78 @@
+:host  {
+  background-color: #F3C5FF;
+}
+.vip-hero {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(to right, #c6f0f2, #1B4568);
+
+}
+
+.rarity-section,
+.loyalty-section,
+.how-to-earn {
+  padding: 1.5rem;
+  background-color: #F3C5FF;
+}
+
+.rarity-grid,
+.loyalty-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  background-color: #F3C5FF;
+
+}
+
+.rarity-card,
+.loyalty-card {
+  background: #fff3eb;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 200px;
+  text-align: center;
+  border: 3px solid #2b2b2b;
+  box-shadow: 4px 4px #2b2b2b;
+}
+
+.rarity-label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.rarity-xp {
+  margin-top: 0.5rem;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.how-to-earn ul {
+  list-style: none;
+  padding: 0;
+}
+
+.how-to-earn li {
+  margin-bottom: 0.5rem;
+}
+
+.cta {
+  text-align: center;
+  padding: 2rem;
+  background-color: #F3C5FF;
+}
+
+.menu-btn {
+  padding: 1rem 2rem;
+  background: #8DF7EB;
+  color: black;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+}
