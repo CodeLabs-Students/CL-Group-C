@@ -48,6 +48,12 @@ export class ShopService {
   }) as Observable<Rarity[]>
 );
 
+  // This sorts the loyalty levels by xp
+  readonly sortedLoyaltyLevels = computed(() => {
+  const all = this.loyaltyLevels();
+  return [...(all ?? [])].sort((a, b) => a.points_required - b.points_required);
+});
+
 //This sorts the rarities list
   readonly sortedRarities = computed(() => {
   const all = this.rarities();

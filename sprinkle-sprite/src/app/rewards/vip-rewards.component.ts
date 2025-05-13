@@ -12,6 +12,6 @@ import { RouterModule } from '@angular/router';
 })
 export class VipRewardsComponent {
   private shop = inject(ShopService);
-  loyaltyLevels = this.shop.loyaltyLevels;
+  loyaltyLevels = this.shop.sortedLoyaltyLevels;
   rarities = this.shop.sortedRarities;
 }

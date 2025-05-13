@@ -4,7 +4,10 @@
 .vip-hero {
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(to right, #c6f0f2, #1B4568);
+  background: linear-gradient(to right, #c6f0f2, #d03eed);
+  color: #1B4568;
+  border: 3px solid #2b2b2b;
+  box-shadow: 4px 4px #2b2b2b;
 
 }
 
@@ -13,6 +16,7 @@
 .how-to-earn {
   padding: 1.5rem;
   background-color: #F3C5FF;
+  color: #1B4568;
 }
 
 .rarity-grid,
@@ -22,6 +26,7 @@
   gap: 1.5rem;
   justify-content: center;
   background-color: #F3C5FF;
+  color: #1B4568;
 
 }
 
@@ -29,8 +34,8 @@
 .loyalty-card {
   background: #fff3eb;
   padding: 1rem 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   width: 200px;
+  color: #1B4568;
   text-align: center;
   border: 3px solid #2b2b2b;
   box-shadow: 4px 4px #2b2b2b;
@@ -65,12 +70,13 @@
 .menu-btn {
   padding: 1rem 2rem;
   background: #8DF7EB;
-  color: black;
   font-weight: bold;
   font-size: 1.1rem;
   border: none;
-  cursor: pointer;
   transition: transform 0.2s ease;
+  color: #1B4568;
+  border: 3px solid #2b2b2b;
+  box-shadow: 4px 4px #2b2b2b;
 }
 
 .menu-btn:hover {
