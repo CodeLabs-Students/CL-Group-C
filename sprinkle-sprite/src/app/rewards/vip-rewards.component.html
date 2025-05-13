@@ -12,3 +12,12 @@
   }
 </ul>
 
+<h2>🧪 Rarity Test</h2>
+
+<ul>
+  @for (rarity of rarities(); track rarity.id) {
+    <li>
+      <strong>{{ rarity.label }}</strong> – {{ rarity.xp_value }} XP
+    </li>
+  }
+</ul>

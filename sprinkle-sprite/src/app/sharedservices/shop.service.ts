@@ -1,14 +1,21 @@
-import { Injectable, inject} from '@angular/core';
+import { Injectable, computed, inject} from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Observable } from 'rxjs';
 
-
+//loyalty level interface
 export interface LoyaltyLevel {
   level_name: string;
   points_required: number;
   reward_description: string;
+}
+
+//rarity interface
+export interface Rarity {
+  id: string;
+  label: string;
+  xp_value: number;
 }
 @Injectable({ providedIn: 'root' })
 export class ShopService {
@@ -33,4 +40,24 @@ export class ShopService {
       idField: 'id'
     }) as Observable<LoyaltyLevel[]>
   );
+
+  //raw unsorted rarities from firebase collection
+  readonly rarities = toSignal(
+  collectionData(collection(this.firestore, 'rarities'), {
+    idField: 'id',
+  }) as Observable<Rarity[]>
+);
+
+//This sorts the rarities list
+  readonly sortedRarities = computed(() => {
+  const all = this.rarities();
+  return [...(all ?? [])].sort((a, b) => a.xp_value - b.xp_value);
+});
+
+// retrieve the XP value for a given rarity ID
+getXpForRarity(rarityId: string): number {
+  const rarityList = this.rarities() ?? [];
+  const rarity = rarityList.find(r => r.id === rarityId);
+  return rarity?.xp_value ?? 0;
+}
 }
