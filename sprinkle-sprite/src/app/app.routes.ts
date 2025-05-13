@@ -15,6 +15,7 @@ export const routes: Routes = [
       { path: 'menu', component: MenuComponent },
       { path: 'checkout', component: CheckoutComponent },
       { path: 'account', component: AccountComponent },
+
     ],
   },
   {
