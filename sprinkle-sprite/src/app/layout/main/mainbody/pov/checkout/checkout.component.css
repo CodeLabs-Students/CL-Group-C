@@ -4,13 +4,12 @@
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  width: 100;
+  width: 100%;
   background-color: #F3C5FF;
-  padding: 2rem;
+  padding: 1.5rem;
   box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
-  border: 3px solid #2b2b2b;
-  box-shadow: 4px 4px #2b2b2b;
+  margin-top: 0;
 }
 
 /* === Checkout Body === */
@@ -23,7 +22,7 @@
   flex-direction: column;
   width: 90vw;
   max-width: 1000px;
-  min-height: 75vh;
+  min-height: 70vh;
 }
 
 .checkout-columns {
@@ -31,6 +30,7 @@
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 /* === Left Column: Thank You + Items === */
@@ -46,7 +46,7 @@
   border: 3px solid #2b2b2b;
   box-shadow: 3px 3px #2b2b2b;
   margin-bottom: 1rem;
-  min-height: 300px;
+  min-height: 240px;
 }
 
 .thank-you h2 {
@@ -64,7 +64,7 @@
 }
 
 .checkout-card {
-  width: 160px;
+  width: 140px;
   background-color: #fff3eb;
   border: 3px solid #2b2b2b;
   box-shadow: 3px 3px #2b2b2b;
@@ -78,7 +78,7 @@
 }
 
 .item-image {
-  height: 100px;
+  height: 80px;
   background-color: #d9d9d9;
   margin-bottom: 1rem;
   display: flex;
@@ -112,7 +112,7 @@
   padding: 1.5rem;
   border: 3px solid #2b2b2b;
   box-shadow: 3px 3px #2b2b2b;
-  min-height: 500px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
