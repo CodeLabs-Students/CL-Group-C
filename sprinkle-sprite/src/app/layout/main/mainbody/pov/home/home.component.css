@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   width: 100%;
   background-color: #F3C5FF;
   padding: 2rem;
   box-sizing: border-box;
   color: #1B4568;
+
 }
 
 .hero-content {

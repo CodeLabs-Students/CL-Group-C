@@ -3,7 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /*min-height: 100vh;*/
+  min-height: calc(100vh - 0px);
   width: 100%;
   background-color: #F3C5FF;
   padding: 2rem;
