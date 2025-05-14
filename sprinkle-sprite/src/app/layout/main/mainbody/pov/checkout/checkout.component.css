@@ -31,6 +31,7 @@
   gap: 2rem;
   width: 100%;
   flex-wrap: wrap;
+  color: #1B4568;
 }
 
 /* === Left Column: Thank You + Items === */
@@ -47,6 +48,7 @@
   box-shadow: 3px 3px #2b2b2b;
   margin-bottom: 1rem;
   min-height: 240px;
+  color: #1B4568;
 }
 
 .thank-you h2 {
