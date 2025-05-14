@@ -47,10 +47,12 @@ main.menu {
   /* Lock height to prevent jumping */
   min-height: 550px;
   transition: min-height 0.3s ease;
+  overflow-x: hidden;
 }
 
 .menu-list.fade-out {
   opacity: 0.3;
+  overflow-x: hidden;
 }
 /* MENU ITEM CARD */
 .menu-item {
