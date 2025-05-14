@@ -1,7 +1,6 @@
 .login-hero {
   display: block;
-  /*min-height: 100vh;*/
-  min-height: calc(100vh - 0px);
+  min-height: 100vh;
   background-color: #F3C5FF; /* Sprinkle Sprite pink */
   padding: 40px 16px;
 }
