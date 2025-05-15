@@ -1,14 +1,17 @@
 .landing-hero {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   background-color: #F3C5FF;
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
   color: #1B4568;
+  margin-top: 0;
 }
+
 
 .hero-content {
   display: flex;
@@ -22,27 +25,27 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 2rem;
-  max-width: 500px;
+  margin-top: 1.5rem;
+  max-width: 480px;
 }
 
 .tagline {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #1B4568;
 }
 
 .info {
-  font-size: 20px;
-  margin-bottom: 1.5rem;
+  font-size: 16px;
+  margin-bottom: 1rem;
 }
 
 .buy-btn {
-  padding: 0.75rem 2rem;
-  background-color: #FCC9E7;
+  padding: 0.5rem 1.5rem;
+  background-color: #c6f0f2;
   font-family: 'Press Start 2P';
-  font-size: 1rem;
+  font-size: 0.85rem;
 
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
   border: 3px solid #2b2b2b;
