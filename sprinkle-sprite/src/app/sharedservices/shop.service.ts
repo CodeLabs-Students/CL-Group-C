@@ -22,7 +22,7 @@ export class ShopService {
   // inject firestore
   private firestore = inject(Firestore);
 
-  // ✅ Pre-create the observables (no DI timing bug)
+  //  Pre-create the observables (no DI timing bug)
   private loyaltyLevels$ = collectionData(
     collection(this.firestore, 'loyalty_levels'),
     { idField: 'id' }
@@ -34,7 +34,6 @@ export class ShopService {
     { idField: 'id' }
   ) as Observable<Rarity[]>;
 
-   // ✅ Signals (now safe to assign here)
   readonly loyaltyLevels = toSignal(this.loyaltyLevels$);
   readonly rarities = toSignal(this.rarities$);
 
