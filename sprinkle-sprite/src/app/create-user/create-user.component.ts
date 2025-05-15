@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Auth, createUserWithEmailAndPassword, updateProfile} from '@angular/fire/auth';
+import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create-user',
@@ -16,9 +18,13 @@ export class CreateUserComponent {
   password = signal('');
   confirmPassword = signal('');
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private auth: Auth,
+    private firestore: Firestore
+  ) {}
 
-  handleCreateAccount(): void {
+  async handleCreateAccount(): Promise<void> {
     const usernameVal = this.username();
     const emailVal = this.email();
     const passwordVal = this.password();
@@ -29,24 +35,28 @@ export class CreateUserComponent {
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    try {
+      // 1) Create the user
+      const cred = await createUserWithEmailAndPassword(this.auth, emailVal, passwordVal );
 
-    const usernameExists = users.some((u: any) => u.username === usernameVal);
-    if (usernameExists) {
-      alert('Username already taken. Please choose another.');
-      return;
+      // 2) Stamp on their displayName
+      await updateProfile(cred.user, { displayName: usernameVal });
+
+      // 3) Persist extra profile data
+      const ref = doc(this.firestore, `users/${cred.user.uid}`);
+      await setDoc(ref, {
+        uid:       cred.user.uid,
+        username:  usernameVal,
+        email:     emailVal,
+        createdAt: new Date()
+      });
+
+      alert('Account created! Redirecting to login…');
+      this.router.navigate(['/login']);
+
+    } catch (err: any) {
+      // catches “email-already-in-use”, weak passwords, etc.
+      alert(`Error: ${err.message}`);
     }
-
-    const newUser = {
-      username: usernameVal,
-      email: emailVal,
-      password: passwordVal, // NOTE: plaintext for testing only
-    };
-
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-
-    alert('Account created! Please log in.');
-    this.router.navigate(['/login']);
   }
 }
