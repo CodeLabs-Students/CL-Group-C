@@ -79,7 +79,7 @@ main.menu {
 .menu-item.expanded {
   transition: transform 0.25s ease,
               box-shadow 0.25s ease,
-              background-color 0.3s ease;
+              background-color 0.2s ease;
 }
 .menu-item:hover {
   transform: translateY(-2px); /* visually nice, layout-safe */
@@ -244,5 +244,6 @@ main.menu {
   .pagination button {
     font-size: 0.8rem;
     padding: 0.4rem 0.75rem;
+    min-height: 44px; /* touch target minimum for accessibility */
   }
 }
