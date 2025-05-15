@@ -73,10 +73,14 @@ main.menu {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
   color: #1B4568;
 }
-
+.menu-item,
+.menu-item.expanded {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.3s ease;
+}
 .menu-item:hover {
   transform: translateY(-2px); /* visually nice, layout-safe */
   box-shadow: 0 0 8px #2b2b2b;
@@ -136,18 +140,13 @@ main.menu {
   transition: background-color 0.2s;
   background-color: #f9b5d0;
 }
-/* Force Checkout button to a new line */
 .checkout-button {
-  flex-basis: 100%;
+  display: block;
+  width: 100%;
   text-align: center;
-  margin-top: 0.25rem;
+  margin: 0.25rem auto 0;
 }
 
-/* Optional: Center it cleaner */
-.checkout-button {
-  margin-left: auto;
-  margin-right: auto;
-}
 /* PAGINATION */
 .pagination {
   margin-top: 1.5rem;
@@ -174,7 +173,6 @@ main.menu {
   height: auto;
   width: 240px;
   background-color: #baf2d8;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
   align-self: start;
   transform: translateY(-2px);
   box-shadow: 0 0 8px #2b2b2b;
