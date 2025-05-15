@@ -13,8 +13,4 @@ export class AccountComponent {
 goToLogin() {
   this.router.navigate(['/login']);
 }
-
-goToVip() {
-  this.router.navigate(['/vip-rewards']);
-}
 }
