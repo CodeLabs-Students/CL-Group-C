@@ -7,6 +7,11 @@ main.menu {
   gap: 2rem;
   min-height: 100vh;
 }
+.icon {
+  max-width: 8rem ;
+  max-height: 8rem ;
+  
+}
 
 /* HERO stays clean */
 .menu-hero {
