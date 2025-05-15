@@ -1,0 +1,22 @@
+<div class="login-hero">
+  <div class="login-container">
+    <h2>🍦 Login to Sprinkle Sprite 🍦</h2>
+
+    <form (ngSubmit)="handleLogin()">
+      <label for="username">Username</label>
+      <input id="username" type="text" required (input)="username.set($any($event.target).value)" />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" required (input)="password.set($any($event.target).value)" />
+
+      <p class="note">
+        Don’t have a members account?
+        <a [routerLink]="['/create-account']">Click here</a>
+      </p>
+
+      <button type="submit">Login</button>
+    </form>
+
+
+  </div>
+</div>

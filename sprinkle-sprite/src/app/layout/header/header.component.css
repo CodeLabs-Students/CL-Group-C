@@ -6,10 +6,14 @@
 }
 
 header {
+  position: relative;
   background-color: #8df7eb; /* Light teal background */
   padding: 20px;
-  text-align: center;
   border-bottom: #1B4568 4px solid; /* Biscay border */
+}
+
+nav {
+  text-align: center; /* Moves nav centering here */
 }
 
 nav ul {
@@ -27,7 +31,6 @@ nav a {
   text-transform: uppercase; /* Make links uppercase */
   padding: 10px 20px;
   border: 2px solid transparent;
-  transition: all 0.3s ease;
 }
 
 nav a:hover {
@@ -38,3 +41,88 @@ nav a:hover {
   box-shadow: 3px 3px #2b2b2b;
 }
 
+
+/* User Info Panel on Right Side of Header */
+.user-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: flex-start; /* top-align text and button */
+  gap: 12px;
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+  color: #1B4568;
+}
+.user-text {
+  display: flex;
+  flex-direction: column; /* stack username and role vertically */
+  line-height: 1.4;
+}
+.logout-btn {
+  background-color: #db90b3;
+  color: white;
+  border: 2px solid #1B4568;
+  padding: 6px 10px;
+  font-size: 10px;
+  font-family: 'Press Start 2P';
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 2px 2px #2b2b2b;
+}
+
+.logout-btn:hover {
+  background-color: #c87aa3;
+  box-shadow: 2px 2px #000;
+}
+@media (max-width: 1259px) {
+  header {
+    padding: 20px 10px 40px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .user-info {
+    position: static;
+    margin-top: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transform: translateY(10px);
+    opacity: 1;
+  }
+
+  .logout-btn {
+    margin-top: 10px;
+  }
+}
+
+
+/* Optional fine-tuning for even smaller screens */
+@media (max-width: 768px) {
+  .user-info {
+    font-size: 9px;
+  }
+
+  .logout-btn {
+    font-size: 9px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-info {
+    font-size: 8px;
+  }
+
+  .logout-btn {
+    font-size: 8px;
+    padding: 4px 8px;
+  }
+}

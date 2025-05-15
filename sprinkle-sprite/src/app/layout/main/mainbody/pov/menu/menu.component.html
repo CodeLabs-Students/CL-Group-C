@@ -1,25 +1,4 @@
 
-<!--<ul>
-    @for (card of paginatedCards; track card.id) {
-        <li>
-            <div class="card">
-            <h3>{{ card.title }}</h3>
-            <p> {{card.description}} </p>
-            </div>
-            <button (click)='increase()'></button>
-            {{count}}
-            <button (click)='decrease()'></button>
-            <button>Checkout</button>
-        </li>
-    }
-</ul>
-
-<div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-    <span>Page {{currentPage}}</span>
-    <button (click)="nextPage()" [disabled]="currentPage >= (cards.length / cardsPerPage)">Next</button>
-</div>
--->
 <main class="menu">
   <div class="menu-hero">
     <h2>Our Flavors</h2>
@@ -38,22 +17,42 @@
             <h3 [title]="card.title">{{ card.title }}</h3>
             <p [title]="card.description">{{ card.description }}</p>
 
+
             @if (card.expanded) {
               <div class="expanded-info">
                 <p><strong>Price:</strong> ${{ card.price }}</p>
                 <p><strong>Rarity:</strong> {{ card.rarity }}</p>
+
+                @if (card.rarity === "Uncommon") {
+                  <img class="icon" src="./assets/resources/vip_Icons/uncommon_Icon.png" alt="Uncommon">
+                }
+                @else if (card.rarity === "Common") {
+                  <img class="icon" src="./assets/resources/vip_Icons/common_Icon.png" alt="Common">
+                }
+                @else if (card.rarity === "Legendary") {
+                  <img class="icon" src="./assets/resources/vip_Icons/legendary_Icon.png" alt="Legendary">
+                }
+                @else if (card.rarity === "Rare") {
+                  <img class="icon" src="./assets/resources/vip_Icons/epic_Icon.png" alt="Rare">
+                }
+                @else if (card.rarity === "Seasonal") {
+                  <img class="icon" src="./assets/resources/vip_Icons/seasonal_Icon.png" alt="Seasonal">
+                }
+
               </div>
             }
+
           </div>
 
           <div class="card-controls" (click)="$event.stopPropagation()">
             <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
             <span>{{ card.count }}</span>
             <button (click)="increase(card)">+</button>
-            <button class="checkout-button">Checkout</button>
+            <button class="checkout-button">Add to cart</button>
           </div>
         </li>
       }
+
     </ul>
   </div>
 
