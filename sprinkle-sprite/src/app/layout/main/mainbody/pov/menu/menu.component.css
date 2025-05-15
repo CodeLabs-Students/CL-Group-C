@@ -78,8 +78,9 @@ main.menu {
 .menu-item,
 .menu-item.expanded {
   transition: transform 0.25s ease,
-              box-shadow 0.25s ease,
-              background-color 0.2s ease;
+    box-shadow 0.25s ease,
+    background-color 0.2s ease,
+    width 0.25s ease;
 }
 .menu-item:hover {
   transform: translateY(-2px); /* visually nice, layout-safe */
@@ -145,8 +146,13 @@ main.menu {
   width: 100%;
   text-align: center;
   margin: 0.25rem auto 0;
+  background-color: #baf2d8;
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
+  padding: 0.5rem 1rem;
+  color: #1B4568;
+  font-weight: bold;
 }
-
 /* PAGINATION */
 .pagination {
   margin-top: 1.5rem;
