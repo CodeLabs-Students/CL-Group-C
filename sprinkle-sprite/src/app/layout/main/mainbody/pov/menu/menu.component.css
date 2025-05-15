@@ -11,7 +11,7 @@ main.menu {
 .icon {
   max-width: 8rem ;
   max-height: 8rem ;
-  
+
 }
 
 /* HERO stays clean */
@@ -53,13 +53,13 @@ main.menu {
   /* Lock height to prevent jumping */
   min-height: 550px;
   transition: min-height 0.3s ease;
-  overflow-x: hidden;
+
   box-sizing: border-box;
 }
 
 .menu-list.fade-out {
   opacity: 0.3;
-  overflow-x: hidden;
+
 }
 /* MENU ITEM CARD */
 .menu-item {
@@ -73,8 +73,7 @@ main.menu {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  overflow: hidden; /* prevent spillage */
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
   color: #1B4568;
 }
 
@@ -164,8 +163,10 @@ main.menu {
   height: auto;
   width: 240px;
   background-color: #baf2d8;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
   align-self: start;
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px #2b2b2b;
 }
 /* Expanded paragraph unlock */
 .menu-item.expanded p {
@@ -176,6 +177,7 @@ main.menu {
 }
 .menu-item.expanded button {
   background-color: #c6f0f2;
+
 }
 /* Fade-in content inside expanded card */
 .expanded-info {
