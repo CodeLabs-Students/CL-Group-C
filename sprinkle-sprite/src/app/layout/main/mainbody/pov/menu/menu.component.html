@@ -5,62 +5,108 @@
     <p>Choose your favorite sprinkle surprise!</p>
   </div>
 
-  <div class="menu-content">
-    <ul class="menu-list">
-      @for (card of paginatedCards; track card.id) {
-        <li
-          class="menu-item"
-          [class.expanded]="card.expanded"
-          (click)="toggleCard(card)"
-        >
-          <div class="card">
-            <h3 [title]="card.title">{{ card.title }}</h3>
-            <p [title]="card.description">{{ card.description }}</p>
+  <!--
+  -----Main container for the menu card grid.-----
+  Holds the list of paginated cards and controls their layout and interaction.
+-->
+<div class="menu-content">
+
+  <!--
+    -----Card grid rendered via Angular's @for loop.-----
+    Iterates over only the cards visible on the current page.
+  -->
+  <ul class="menu-list">
+    @for (card of paginatedCards; track card.id) {
+
+      <!--
+        -----Individual card container.-----
+        Clicking toggles the card's expanded state.
+        The 'expanded' class is applied for styling.
+      -->
+      <li
+        class="menu-item"
+        [class.expanded]="card.expanded"
+        (click)="toggleCard(card)"
+      >
+        <div class="card">
+          <!--
+            -----Card title and description.-----
+            Tooltip included for overflow accessibility.
+          -->
+          <h3 [title]="card.title">{{ card.title }}</h3>
+          <p [title]="card.description">{{ card.description }}</p>
+
+          <!--
+            -----Expanded info section.-----
+            Only shown if the card is currently expanded.
+          -->
+          @if (card.expanded) {
+            <div class="expanded-info">
+              <p><strong>Price:</strong> ${{ card.price }}</p>
+              <p><strong>Rarity:</strong> {{ card.rarity }}</p>
+
+              <!--
+                -----Rarity icon logic.-----
+                Dynamically displays the correct image based on card.rarity.
+              -->
+              @if (card.rarity === "Uncommon") {
+                <img class="icon" src="./assets/resources/vip_Icons/uncommon_Icon.png" alt="Uncommon">
+              }
+              @else if (card.rarity === "Common") {
+                <img class="icon" src="./assets/resources/vip_Icons/common_Icon.png" alt="Common">
+              }
+              @else if (card.rarity === "Legendary") {
+                <img class="icon" src="./assets/resources/vip_Icons/legendary_Icon.png" alt="Legendary">
+              }
+              @else if (card.rarity === "Rare") {
+                <img class="icon" src="./assets/resources/vip_Icons/epic_Icon.png" alt="Rare">
+              }
+              @else if (card.rarity === "Seasonal") {
+                <img class="icon" src="./assets/resources/vip_Icons/seasonal_Icon.png" alt="Seasonal">
+              }
+            </div>
+          }
+        </div>
+
+        <!--
+          ➕➖ Card interaction controls.
+          Includes increment/decrement buttons and add to cart.
+          Uses stopPropagation to prevent click event from bubbling
+          and accidentally toggling card expansion.
+        -->
+        <div class="card-controls" (click)="$event.stopPropagation()">
+          <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
+          <span>{{ card.count }}</span>
+          <button (click)="increase(card)">+</button>
+          <button class="checkout-button">Add to cart</button>
+        </div>
+      </li>
+    }
+  </ul>
+</div>
 
 
-            @if (card.expanded) {
-              <div class="expanded-info">
-                <p><strong>Price:</strong> ${{ card.price }}</p>
-                <p><strong>Rarity:</strong> {{ card.rarity }}</p>
+    <!--
+  -----Pagination controls for the menu view.-----
+  - 'Previous' and 'Next' buttons navigate between pages.
+  - Buttons are disabled when at the beginning or end of the card list.
+  - Current page number is displayed between the buttons.
+-->
+<div class="pagination">
+  <!-----Navigate to the previous page; disabled on the first page----->
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
 
-                @if (card.rarity === "Uncommon") {
-                  <img class="icon" src="./assets/resources/vip_Icons/uncommon_Icon.png" alt="Uncommon">
-                }
-                @else if (card.rarity === "Common") {
-                  <img class="icon" src="./assets/resources/vip_Icons/common_Icon.png" alt="Common">
-                }
-                @else if (card.rarity === "Legendary") {
-                  <img class="icon" src="./assets/resources/vip_Icons/legendary_Icon.png" alt="Legendary">
-                }
-                @else if (card.rarity === "Rare") {
-                  <img class="icon" src="./assets/resources/vip_Icons/epic_Icon.png" alt="Rare">
-                }
-                @else if (card.rarity === "Seasonal") {
-                  <img class="icon" src="./assets/resources/vip_Icons/seasonal_Icon.png" alt="Seasonal">
-                }
+  <!-----Display current page number----->
+  <span>Page {{ currentPage }}</span>
 
-              </div>
-            }
+  <!-----Navigate to the next page; disabled on the last page----->
+  <button
+    (click)="nextPage()"
+    [disabled]="currentPage >= (cards.length / cardsPerPage)">
+    Next
+  </button>
+</div>
 
-          </div>
-
-          <div class="card-controls" (click)="$event.stopPropagation()">
-            <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
-            <span>{{ card.count }}</span>
-            <button (click)="increase(card)">+</button>
-            <button class="checkout-button">Add to cart</button>
-          </div>
-        </li>
-      }
-
-    </ul>
-  </div>
-
-    <div class="pagination">
-      <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }}</span>
-      <button (click)="nextPage()" [disabled]="currentPage >= (cards.length / cardsPerPage)">Next</button>
-    </div>
 
 </main>
 
