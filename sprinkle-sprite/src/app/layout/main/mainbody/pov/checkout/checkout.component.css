@@ -167,3 +167,11 @@
   transition: background-color 0.2s;
   background-color: #f9b5d0;
 }
+
+.icon {
+  height: 50px;
+}
+
+.seasonal-name {
+  font-size: 6px;
+}

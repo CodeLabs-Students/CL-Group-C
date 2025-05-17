@@ -13,9 +13,10 @@
         </section>
 
         <!--All cards go inside here position below thank you left side-->
-        <div class="checkout-items">
+        @if (card.rarity === 'Seasonal') {<div class="checkout-items">
           <div class="checkout-card">
-            <div class="item-image">PIXEL HERE</div>
+            <div class="item-image">{{card.rarity === "Seasonal"}}</div>
+            <p class="seasonal-name">{{card.rarity === "Seasonal"}}</p>
             <div class="item-count">item count</div>
             <button class="checkout-button">add to cart</button>
           </div>
@@ -32,8 +33,7 @@
             <button class="checkout-button">add to cart</button>
           </div>
         </div>
-      </div>
-
+    }
       <!-- RIGHT: Summary box -->
       <section class="summary">
         <h3>CHECKOUT</h3>
@@ -72,4 +72,3 @@
 
     </div>
   </div>
-</main>
