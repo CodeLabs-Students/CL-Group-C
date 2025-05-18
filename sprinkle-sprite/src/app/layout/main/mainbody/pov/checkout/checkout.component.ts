@@ -1,6 +1,6 @@
 import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CardDataService } from '../../../../../sharedservices/card-data.service';
-
+import { CommonModule, CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-checkout',
   imports: [],
@@ -8,6 +8,8 @@ import { CardDataService } from '../../../../../sharedservices/card-data.service
   styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent {
-  constructor(cardData: CardDataService) {}
+  readonly cardDataService = inject(CardDataService);
+  readonly totalPrice = computed(() => this.cardDataService.totalPrice());
+  readonly totalCount = computed(() => this.cardDataService.totalCount());
 }
 
