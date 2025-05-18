@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed, ChangeDetectionStrategy } from '@angular/core';
+import { CardDataService } from '../../../../../sharedservices/card-data.service';
 
 @Component({
   selector: 'app-checkout',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './checkout.component.css'
 })
 export class CheckoutComponent {
-
+  constructor(cardData: CardDataService) {}
 }
+
