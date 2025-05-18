@@ -4,21 +4,33 @@ import { CardDataService, Card } from '../../../../../sharedservices/card-data.s
 
 @Component({
   selector: 'app-checkout',
+  standalone: true,
   imports: [],
   templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css'
+  styleUrl: './checkout.component.css',
 })
 export class CheckoutComponent {
-  seasonalItems: any[] = [];
-card: any;
-currentPage = 1;
-cardsPerPage = 8;
+  seasonalItems: Card[] = [];
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(
+    public cardService: CardDataService,
+    private inventoryService: InventoryService
+  ) {}
 
   ngOnInit(): void {
-    this.inventoryService.getFlavors().subscribe((items) => {
-      this.seasonalItems = items.filter(item => item.rarity === 'Seasonal');
-    });
+    if (this.cardService.cards.length === 0) {
+      this.inventoryService.getFlavors().subscribe((flavors) => {
+        this.cardService.setFromFlavors(flavors);
+        this.filterSeasonal();
+      });
+    } else {
+      this.filterSeasonal();
+    }
+  }
+
+  private filterSeasonal(): void {
+    this.seasonalItems = this.cardService.cards.filter(
+      (card) => card.rarity === 'Seasonal'
+    );
   }
 }

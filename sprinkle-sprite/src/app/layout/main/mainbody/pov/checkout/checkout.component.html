@@ -2,38 +2,66 @@
   <div class="checkout-body">
     <div class="checkout-columns">
 
-      <!-- LEFT: Thank-you message + item list -->
+      <!-- LEFT: Thank-you message + card list -->
       <div class="checkout-left">
         <section class="thank-you">
           <h2>THANK YOU FOR<br />SHOPPING WITH US</h2>
           <p>
-            You just made our day a little sweeter.<br>
-            Come back soon! <br> We’re always scooping up something magical!
+            You just made our day a little sweeter.<br />
+            Come back soon! <br />
+            We’re always scooping up something magical!
           </p>
         </section>
 
-        <!--All cards go inside here position below thank you left side-->
-        @if (card.rarity === 'Seasonal') {<div class="checkout-items">
-          <div class="checkout-card">
-            <div class="item-image">{{card.rarity === "Seasonal"}}</div>
-            <p class="seasonal-name">{{card.rarity === "Seasonal"}}</p>
-            <div class="item-count">item count</div>
-            <button class="checkout-button">add to cart</button>
-          </div>
+        @if (seasonalItems.length > 0) {
+          <div class="checkout-items">
+            @for (card of seasonalItems; track card.id) {
+              <div
+                class="checkout-card"
+                [class.expanded]="card.expanded"
+                (click)="cardService.toggleCard(card)"
+              >
+                <h3 [title]="card.title">{{ card.title }}</h3>
+                <p [title]="card.description">{{ card.description }}</p>
 
-          <div class="checkout-card">
-            <div class="item-image">PIXEL HERE</div>
-            <div class="item-count">item count</div>
-            <button class="checkout-button">add to cart</button>
-          </div>
+                @if (card.expanded) {
+                  <div class="expanded-info">
+                    <p><strong>Price:</strong> ${{ card.price }}</p>
+                    <p><strong>Rarity:</strong> {{ card.rarity }}</p>
 
-          <div class="checkout-card">
-            <div class="item-image">PIXEL HERE</div>
-            <div class="item-count">item count</div>
-            <button class="checkout-button">add to cart</button>
+                    @if (card.rarity === 'Uncommon') {
+                      <img class="icon" src="assets/resources/vip_Icons/uncommon_Icon.png" alt="Uncommon" />
+                    }
+                    @else if (card.rarity === 'Common') {
+                      <img class="icon" src="assets/resources/vip_Icons/common_Icon.png" alt="Common" />
+                    }
+                    @else if (card.rarity === 'Legendary') {
+                      <img class="icon" src="assets/resources/vip_Icons/legendary_Icon.png" alt="Legendary" />
+                    }
+                    @else if (card.rarity === 'Rare') {
+                      <img class="icon" src="assets/resources/vip_Icons/epic_Icon.png" alt="Rare" />
+                    }
+                    @else if (card.rarity === 'Seasonal') {
+                      <img class="icon" src="assets/resources/vip_Icons/seasonal_Icon.png" alt="Seasonal" />
+                    }
+                  </div>
+                }
+
+                <div class="card-controls" (click)="$event.stopPropagation()">
+                  <button (click)="cardService.decrease(card)" [disabled]="card.count === 0">−</button>
+                  <span>{{ card.count }}</span>
+                  <button (click)="cardService.increase(card)">+</button>
+                  <button class="checkout-button">Add to cart</button>
+                </div>
+              </div>
+            }
           </div>
-        </div>
-    }
+        }
+        @else {
+          <p>No seasonal items available.</p>
+        }
+      </div>
+
       <!-- RIGHT: Summary box -->
       <section class="summary">
         <h3>CHECKOUT</h3>
@@ -42,29 +70,23 @@
           <p>ITEMS:</p>
           <span>$0.00</span>
         </div>
-
         <div class="summary-line">
           <p>TAXES:</p>
           <span>$0.00</span>
         </div>
-
         <div class="summary-line">
           <p>SHIPPING:</p>
           <span>$0.00</span>
         </div>
-
         <div class="summary-line total">
           <p>TOTAL:</p>
           <span>$0.00</span>
         </div>
-
         <hr />
-
         <div class="summary-line grand-total">
           <p>TOTAL:</p>
           <span>$0.00</span>
         </div>
-
         <div class="checkout-btn-wrapper">
           <button class="checkout-now">CHECKOUT NOW</button>
         </div>
@@ -72,3 +94,4 @@
 
     </div>
   </div>
+</main>
