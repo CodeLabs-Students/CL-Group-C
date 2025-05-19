@@ -1,29 +1,41 @@
 <header>
+
+  <!-- ===== Navigation Bar ===== -->
   <nav>
     <ul>
+
+      <!-- Link to Home page -->
       <li><a [routerLink]="['/home']">Home</a></li>
+
+      <!-- Link to Checkout page -->
       <li><a [routerLink]="['/checkout']">Checkout</a></li>
+
+      <!-- Link to Menu page -->
       <li><a [routerLink]="['/menu']">Menu</a></li>
-      <li><a [routerLink]="['/account']">Account</a></li><!--Throw on Ap header-->
+
+      <!-- Link to Account/Profile page -->
+      <!-- Optional: Move this to app header for consistent access -->
+      <li><a [routerLink]="['/account']">Account</a></li>
+
     </ul>
   </nav>
 
-
-
-  <!--user info area-->
+  <!-- ===== User Info + Auth Button ===== -->
   <div class="user-info">
-  @if (auth.isLoggedIn(); as loggedIn) {
-    <div class="user-text">
-      <p class="username">Welcome: <strong>{{ auth.username() }}</strong></p>
-      <p class="role">Role: <em>VIP Placeholder</em></p>
-    </div>
-  }
 
-  <button class="logout-btn" (click)="handleAuthClick()">
-    {{ auth.isLoggedIn() ? 'Logout' : 'Login' }}
-  </button>
-</div>
+    <!-- Show username and role if user is logged in -->
+    @if (auth.isLoggedIn(); as loggedIn) {
+      <div class="user-text">
+        <p class="username">Welcome: <strong>{{ auth.username() }}</strong></p>
+        <p class="role">Role: <em>VIP Placeholder</em></p>
+      </div>
+    }
 
+    <!-- Login/Logout toggle button -->
+    <button class="logout-btn" (click)="handleAuthClick()">
+      {{ auth.isLoggedIn() ? 'Logout' : 'Login' }}
+    </button>
 
+  </div>
 
-  </header>
+</header>
