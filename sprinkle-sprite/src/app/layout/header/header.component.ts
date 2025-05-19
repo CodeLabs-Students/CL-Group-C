@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterLink, RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
 
@@ -11,8 +11,13 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class HeaderComponent {
   auth = inject(AuthService);
+  router = inject(Router);
 
-  logout() {
-    this.auth.logout();
+  handleAuthClick() {
+    if (this.auth.isLoggedIn()) {
+      this.auth.logout();
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
