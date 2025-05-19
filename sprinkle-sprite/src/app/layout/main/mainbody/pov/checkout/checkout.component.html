@@ -45,7 +45,7 @@
 
         <div class="summary-line">
           <p>TAXES:</p>
-          <span>$0.00</span>
+          <span>{{ .08475 * totalPrice() | currency }}</span>
         </div>
 
         <div class="summary-line">
@@ -55,7 +55,7 @@
 
         <div class="summary-line total">
           <p>TOTAL:</p>
-          <span>$0.00</span>
+          <span>{{ (.08475 * totalPrice()) + totalPrice() | currency}}</span>
         </div>
 
         <hr />
