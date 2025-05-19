@@ -203,8 +203,10 @@
   background-color: #f9b5d0;
 }
 .icon {
-  max-width: 6rem ;
-  max-height: 6rem ;
+  max-width: 6rem;
+  max-height: 6rem;
+ aspect-ratio: 1 / 1;
+ object-fit: contain;
 }
 /* === Right Column: Summary === */
 .summary {
