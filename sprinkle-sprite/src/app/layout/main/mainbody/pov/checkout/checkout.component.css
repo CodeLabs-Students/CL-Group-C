@@ -75,6 +75,8 @@
   align-items: start;
   padding: 0 1rem;
   box-sizing: border-box;
+  position: relative;
+  overflow: visible;
 }
 /* CHECKOUT CARD: Match menu-item style exactly */
 .checkout-card {
@@ -91,27 +93,29 @@
   color: #1B4568;
   align-self: start;
   position: relative;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background-color 0.2s ease,
-    width 0.25s ease;
+  transition: transform 0.25s ease;
 }
+
+
 .checkout-card:hover{
   transform: translateY(-2px);
 }
 
 .checkout-card.expanded {
-  background-color: #baf2d8;
+  position: relative;
+
+  transform: scale(1.08) translateY(-8px); /* Use translate to nudge if needed */
+  width: 180px;
   height: auto;
-  transform: scale(1.05);
-  z-index: 5;
+  background-color: #baf2d8;
   box-shadow: 0 0 10px #2b2b2b;
+  z-index: 5;
   transition: transform 0.25s ease,
               box-shadow 0.25s ease,
               background-color 0.2s ease,
               width 0.25s ease;
 }
+
 
 /* TITLE */
 .checkout-card h3 {
@@ -251,43 +255,5 @@
 
 .checkout-now:hover {
   background-color: #f9b5d0;
-}
-
-/* === Responsive Tweaks === */
-@media (max-width: 900px) {
-  .checkout-columns {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .summary {
-    max-width: 100%;
-    margin-top: 2rem;
-  }
-  .checkout-left {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  .checkout-body {
-    padding: 0.5rem;
-  }
-  .thank-you {
-    min-height: unset;
-    padding: 0.75rem;
-  }
-  .checkout-items {
-    gap: 1rem;
-    justify-content: center;
-  }
-  .checkout-card {
-    width: 100%;
-    min-width: 0;
-    padding: 0.7rem;
-  }
-  .summary {
-    padding: 1rem;
-    min-height: unset;
-  }
 }
 
