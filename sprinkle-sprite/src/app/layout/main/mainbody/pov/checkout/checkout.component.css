@@ -22,23 +22,20 @@
   padding: 2rem;
   border: 4px solid #2b2b2b;
   box-shadow: 4px 4px #2b2b2b;
+
+  /* --- Merged from .checkout-columns --- */
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 90vw;
   max-width: 1000px;
   min-height: 50vh;
   overflow: visible;
-}
-
-/* === Columns Layout === */
-.checkout-columns {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  width: 100%;
   color: #1B4568;
+  box-sizing: border-box;
+  gap: 2rem;
 }
 
 /* === Left Column === */
@@ -46,9 +43,10 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  flex: 0 0 650px;
+  flex: 1 1 300px;
   max-width: 650px;
   align-items: flex-start;
+  box-sizing: border-box;
 
 }
 
@@ -59,7 +57,11 @@
   box-shadow: 3px 3px #2b2b2b;
   min-height: 240px;
   color: #1B4568;
-  max-width: 620px;
+
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
 .thank-you h2 {
@@ -71,6 +73,7 @@
 .checkout-items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 280px;
   gap: 1.5rem;
   align-items: start;
   padding: 0 1rem;
@@ -80,7 +83,9 @@
 }
 /* CHECKOUT CARD: Match menu-item style exactly */
 .checkout-card {
-  max-width: 180px;
+  width: 100%;
+  min-width: 140px;     /* Optional, keeps them from getting too skinny */
+  max-width: 200px;
   height: 280px;
   background-color: #fff3eb;
   border: 3px solid #2b2b2b;
@@ -94,6 +99,7 @@
   align-self: start;
   position: relative;
   transition: transform 0.25s ease;
+  box-sizing: border-box;
 }
 
 
@@ -104,30 +110,36 @@
 .checkout-card.expanded {
   position: relative;
 
-  transform: scale(1.08) translateY(-8px); /* Use translate to nudge if needed */
-  width: 180px;
+  transform: scale(1.08) ; /* Use translate to nudge if needed */
+  width: 160px;
   height: auto;
+  min-height: 280px;
   background-color: #baf2d8;
   box-shadow: 0 0 10px #2b2b2b;
+  box-sizing: border-box;
   z-index: 5;
   transition: transform 0.25s ease,
               box-shadow 0.25s ease,
               background-color 0.2s ease,
-              width 0.25s ease;
+
 }
 
 
 /* TITLE */
 .checkout-card h3 {
-  font-size: 0.95rem;
-  margin: 0 0 0.3rem;
+  font-size: clamp(0.4rem, 2vw, 0.6rem);
+  margin-bottom: 0.4em;
   line-height: 1.2;
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;           /* Show 2 lines max */
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: normal;
-  max-height: 2.4em;
-  font-weight: bold;
 }
+
 
 /* DESCRIPTION */
 .checkout-card p {
@@ -191,12 +203,13 @@
   background-color: #f9b5d0;
 }
 .icon {
-  max-width: 8rem ;
-  max-height: 8rem ;
+  max-width: 6rem ;
+  max-height: 6rem ;
 }
 /* === Right Column: Summary === */
 .summary {
-  flex: 1 1 auto;
+  flex: 0 0 320px;              /* 👈 fixes width to 320px */
+  max-width: 320px;             /* 👈 prevents it from overflowing */
   height: 600px;
   align-self: flex-start;
   background-color: #fff3eb;
@@ -207,9 +220,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 320px;
-  min-width: 280px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
+
 
 .summary h3 {
   font-size: 0.75rem;
@@ -257,3 +271,43 @@
   background-color: #f9b5d0;
 }
 
+/* Base styles (mobile first) */
+body {
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+/* Tablets */
+@media (min-width: 600px) {
+  body {
+    font-size: 1.1rem;
+  }
+
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card {
+    width: calc(33.333% - 1rem); /* 3 cards per row */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.2rem;
+  }
+
+  .hero {
+    padding: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  .summary,
+  .thank-you {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
