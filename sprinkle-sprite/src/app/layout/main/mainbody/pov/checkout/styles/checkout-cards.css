@@ -1,0 +1,128 @@
+
+/* CHECKOUT CARD: Match menu-item style exactly */
+.checkout-card {
+  width: 100%;
+  min-width: 140px;     /* Optional, keeps them from getting too skinny */
+  max-width: 200px;
+  min-height: 220px;     /* Or whatever minimum looks good */
+  height: auto;
+  background-color: #fff3eb;
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #1B4568;
+  align-self: start;
+  position: relative;
+  transition: transform 0.25s ease;
+  box-sizing: border-box;
+}
+
+
+.checkout-card:hover{
+  transform: translateY(-2px);
+}
+
+
+
+/* TITLE */
+.checkout-card h3 {
+  font-size: clamp(0.4rem, 2vw, 0.6rem);
+  margin-bottom: 0.4em;
+  line-height: 1.2;
+  font-weight: bold;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;           /* Show 2 lines max */
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+
+/* DESCRIPTION */
+.checkout-card p {
+  font-size: clamp(0.55rem, 1vw, 0.7rem);  /* Just a touch smaller than the title */
+  margin: 0.15em 0;                         /* Even tighter vertical spacing */
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;                    /* Two lines max, like a subtitle */
+  -webkit-box-orient: vertical;
+  line-clamp: 10;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+/* RARITY / PRICE STYLE (OPTIONAL, IF USED) */
+.checkout-card .rarity,
+.checkout-card .price {
+  font-size: clamp(0.65rem, 1.2vw, 0.8rem);  /* Slightly smaller than the description */
+  color: #2b2b2b;
+  font-weight: bold;
+  margin-bottom: 0.18em;                     /* Even more compact */
+  letter-spacing: 0.03em;                     /* Optional: just a hint of spacing for clarity */
+}
+
+/* CARD CONTROLS */
+.card-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;                    /* Scales with font-size; a bit smaller */
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.3em;                /* (Optional) For extra-tight vertical wrapping */
+  column-gap: 0.5em;             /* Separate horizontal/vertical gap if desired */
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+}
+
+.card-controls button {
+  background-color: #baf2d8;
+  padding: 0.3em 0.7em;                 /* Scales with font size, more compact */
+  font-weight: bold;
+  color: #1B4568;
+  min-width: 2.5em;                     /* Responsive min width */
+  font-size: clamp(0.7rem, 2vw, 0.9rem);/* Scales down on mobile, maxes at 0.9rem */
+  border: 2px solid #2b2b2b;            /* Slightly thinner border for smaller size */
+  box-shadow: 2px 2px #2b2b2b;          /* Slightly smaller shadow to match */
+  border-radius: 0.2em;                 /* Optional: a little rounding for touch targets */
+  transition: background-color 0.2s;
+}
+
+.card-controls button:hover {
+  background-color: #f9b5d0;
+}
+
+.checkout-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0.18em auto 0;                /* Compact, scalable margin */
+  background-color: #baf2d8;
+  border: 2px solid #2b2b2b;            /* Thinner border for smaller buttons */
+  box-shadow: 2px 2px #2b2b2b;          /* Match the more compact button style */
+  padding: 0.36em 0.8em;                /* Scales with font size, compact for small screens */
+  color: #1B4568;
+  font-weight: bold;
+  font-size: clamp(0.75rem, 2vw, 0.95rem); /* Shrinks on mobile, never too big */
+  border-radius: 0.2em;                 /* Optional, more touch-friendly */
+  transition: background-color 0.2s;
+}
+
+.checkout-button:hover {
+  background-color: #f9b5d0;
+}
+.icon {
+  max-width: 4em;           /* Shrinks with card font-size */
+  max-height: 4em;
+  width: 100%;              /* Always fills available space in container */
+  height: auto;             /* Maintain aspect ratio */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;           /* Center horizontally if needed */
+}
