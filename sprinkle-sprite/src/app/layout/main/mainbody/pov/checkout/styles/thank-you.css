@@ -1,0 +1,25 @@
+.thank-you {
+  background-color: #fff3eb;
+  padding: clamp(0.5rem, 2vw, 1.2rem); /* Responsive padding */
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
+  min-height: 140px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+.thank-you h2 {
+  font-size: clamp(1.1rem, 3vw, 1.7rem); /* Responsive, never too big or small */
+  margin-bottom: 0.5em;
+  line-height: 1.1;
+  text-align: center;
+  word-break: break-word;
+}
+
+.thank-you p {
+  font-size: clamp(0.75rem, 2vw, 1rem); /* Responsive */
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 0;
+}

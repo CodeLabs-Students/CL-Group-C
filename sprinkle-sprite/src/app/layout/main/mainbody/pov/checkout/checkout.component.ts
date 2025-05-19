@@ -7,7 +7,15 @@ import { CardDataService, Card } from '../../../../../sharedservices/card-data.s
   standalone: true,
   imports: [],
   templateUrl: './checkout.component.html',
-  styleUrl: './checkout.component.css',
+  styleUrls: [
+    './checkout.component.css',
+    './styles/checkout-layout.css',
+    './styles/thank-you.css',
+    './styles/checkout-cards.css',
+    './styles/checkout-card-expanded.css',
+    './styles/summary-box.css',
+    './styles/checkout-media.css',
+  ]
 })
 export class CheckoutComponent {
   seasonalItems: Card[] = [];
