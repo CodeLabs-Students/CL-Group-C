@@ -23,6 +23,7 @@ export class CheckoutComponent {
   // Inject services
   private readonly inventoryService = inject(InventoryService);
   readonly cardDataService = inject(CardDataService);
+  readonly cardService = this.cardDataService;
 
   // Computed properties
   readonly totalPrice = computed(() => this.cardDataService.totalPrice());
