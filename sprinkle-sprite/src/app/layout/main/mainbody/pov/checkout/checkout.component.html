@@ -68,11 +68,11 @@
 
         <div class="summary-line">
           <p>ITEMS:</p>
-          <span>$0.00</span>
+          <span>{{totalCount()}} item(s) at {{ totalPrice() | currency }}</span>
         </div>
         <div class="summary-line">
           <p>TAXES:</p>
-          <span>$0.00</span>
+          <span>{{ .08475 * totalPrice() | currency }}</span>
         </div>
         <div class="summary-line">
           <p>SHIPPING:</p>
@@ -80,12 +80,12 @@
         </div>
         <div class="summary-line total">
           <p>TOTAL:</p>
-          <span>$0.00</span>
+          <span>{{ (.08475 * totalPrice()) + totalPrice() | currency}}</span>
         </div>
         <hr />
         <div class="summary-line grand-total">
           <p>TOTAL:</p>
-          <span>$0.00</span>
+          <span>{{ (.08475 * totalPrice()) + totalPrice() | currency}}</span>
         </div>
         <div class="checkout-btn-wrapper">
           <button class="checkout-now">CHECKOUT NOW</button>
