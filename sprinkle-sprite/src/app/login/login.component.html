@@ -1,22 +1,50 @@
+<!-- ===== Login Page Layout ===== -->
+
 <div class="login-hero">
   <div class="login-container">
+
+    <!-----Page Title----->
+    <!-- Introduces the login form with a fun Sprinkle Sprite theme -->
     <h2>🍦 Login to Sprinkle Sprite 🍦</h2>
 
+    <!-----Login Form----->
+    <!--
+      Submits the form using handleLogin() from the component.
+      Each field updates a signal when changed.
+    -->
     <form (ngSubmit)="handleLogin()">
+
+      <!-----Username Field----->
+      <!-----Updates the 'username' signal on input----->
       <label for="username">Username</label>
-      <input id="username" type="text" required (input)="username.set($any($event.target).value)" />
+      <input
+        id="username"
+        type="text"
+        required
+        (input)="username.set($any($event.target).value)"
+      />
 
+      <!-----Password Field----->
+      <!-----Updates the 'password' signal on input----->
       <label for="password">Password</label>
-      <input id="password" type="password" required (input)="password.set($any($event.target).value)" />
+      <input
+        id="password"
+        type="password"
+        required
+        (input)="password.set($any($event.target).value)"
+      />
 
+      <!-----Account Creation Link----->
+      <!-- Helpful link for new users who don’t have an account yet -->
       <p class="note">
         Don’t have a members account?
         <a [routerLink]="['/create-account']">Click here</a>
       </p>
 
+      <!-----Login Button----->
+      <!-- Triggers ngSubmit and calls handleLogin() -->
       <button type="submit">Login</button>
     </form>
-
 
   </div>
 </div>
