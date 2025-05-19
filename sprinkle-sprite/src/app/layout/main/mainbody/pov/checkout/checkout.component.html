@@ -40,7 +40,7 @@
 
         <div class="summary-line">
           <p>ITEMS:</p>
-          <span>{{ totalPrice() | currency }}</span>
+          <span>{{totalCount()}} item(s) at {{ totalPrice() | currency }}</span>
         </div>
 
         <div class="summary-line">
@@ -62,7 +62,7 @@
 
         <div class="summary-line grand-total">
           <p>TOTAL:</p>
-          <span>$0.00</span>
+          <span>{{ (.08475 * totalPrice()) + totalPrice() | currency}}</span>
         </div>
 
         <div class="checkout-btn-wrapper">
