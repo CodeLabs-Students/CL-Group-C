@@ -1,0 +1,66 @@
+@media (max-width: 1000px) {
+  .checkout-items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+@media (max-width: 982px) {
+  .checkout-body {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .checkout-left,
+  .summary {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+  .summary {
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 900px) {
+  .checkout-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    padding: 0 0.2rem;
+    justify-items: center;
+  }
+}
+
+/* "Middleman" to avoid crowding at edge cases */
+@media (max-width: 700px) {
+  .checkout-body {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .checkout-left,
+  .summary {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+  .checkout-items {
+    grid-template-columns: 1fr 1fr; /* Still 2 columns for a bit longer */
+    gap: 0.6rem;
+    justify-items: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .checkout-items {
+    grid-template-columns: 1fr;     /* Switch to single column */
+    justify-items: center;
+    gap: 0.4rem;
+  }
+  .checkout-card {
+    min-width: 120px;
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+  }
+}
