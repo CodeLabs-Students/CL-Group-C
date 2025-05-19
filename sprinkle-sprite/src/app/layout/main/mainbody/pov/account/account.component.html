@@ -1,7 +1,11 @@
 <main class="account-hero">
   <div class="account-box">
+
+    <!-- Page header -->
     <div class="account-header">PROFILE</div>
 
+    <!-- LOGIN Button -->
+    <!-- Navigates to the login page using goToLogin() -->
     <a routerLink="/login">
       <button class="account-button" (click)="goToLogin()">
         <img src="assets/resources/icons/account_Icon.png" alt="Account icon" />
@@ -9,19 +13,28 @@
       </button>
     </a>
 
+    <!-- FAVORITES Button -->
+    <!-- Placeholder for user favorites (not wired yet) -->
     <button class="account-button">
       <img src="assets/resources/icons/heart_selected.png" alt="Favorites" />
       FAVORITES
     </button>
 
+    <!-- ADDRESS Button -->
+    <!-- Placeholder for saved address (not wired yet) -->
     <button class="account-button">
       <img src="assets/resources/icons/address.png" alt="Address" />
       ADDRESS
     </button>
 
+    <!-- VIP MEMBERSHIP Button -->
+    <!-- Navigates to the VIP page using goToVip() -->
+    <!-- Includes animated ice cream icons for flair -->
     <button class="account-button" (click)="goToVip()">
       <img src="assets/resources/icons/vip.png" alt="VIP" />
       VIP MEMBERSHIP
+
+      <!-- Animated ice cream visuals (rarity themed) -->
       <div class="ice-cream" style="left: 5%; animation-delay: 0s;">
         <img src="assets/resources/vip_Icons/common_Icon.png" alt="ice cream" />
       </div>
@@ -41,5 +54,6 @@
         <img src="assets/resources/vip_Icons/epic_Icon.png" alt="ice cream" />
       </div>
     </button>
+
   </div>
 </main>
