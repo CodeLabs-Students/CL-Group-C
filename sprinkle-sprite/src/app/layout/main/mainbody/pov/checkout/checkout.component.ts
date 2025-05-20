@@ -14,11 +14,12 @@ import { CartActionsService } from '../../../../../sharedservices/cart-actions.s
 //----- Checkout Component -----//
 
 @Component({
-  selector: 'app-checkout',                         // Component selector used in templates
-  standalone: true,                                 // Standalone component (no NgModule needed)
-  imports: [CommonModule, CurrencyPipe],            // Common directives and currency formatting
-  templateUrl: './checkout.component.html',         // HTML template path
-  styleUrls: [                                      // Multiple CSS files for layout and styling
+  selector: 'app-checkout', // Component selector used in templates
+  standalone: true, // Standalone component (no NgModule needed)
+  imports: [CommonModule, CurrencyPipe], // Common directives and currency formatting
+  templateUrl: './checkout.component.html', // HTML template path
+  styleUrls: [
+    // Multiple CSS files for layout and styling
     './checkout.component.css',
     './styles/checkout-layout.css',
     './styles/thank-you.css',
@@ -27,10 +28,9 @@ import { CartActionsService } from '../../../../../sharedservices/cart-actions.s
     './styles/summary-box.css',
     './styles/checkout-media.css',
     './styles/checkout-summary-items.css',
-  ]
+  ],
 })
 export class CheckoutComponent {
-
   //----- Service Injection -----//
 
   // Inject backend and shared card services
@@ -76,18 +76,26 @@ export class CheckoutComponent {
     this.seasonalItems = this.cardDataService.cards.filter(
       (card) => card.rarity === 'Seasonal'
     );
-  }//----- Cart Item Editing -----//
+  } //----- Cart Item Editing -----//
 
-
-    //Opens a prompt to let the user edit the quantity of a cart item.
-    //- If user enters 0, the item will be removed.
-    //- Invalid entries are ignored.
-
+  //Opens a prompt to let the user edit the quantity of a cart item.
+  //- If user enters 0, the item will be removed.
+  //- Invalid entries are ignored.
 
   editItem(item: CartItem): void {
-    const newCount = Number(prompt(`Edit quantity for "${item.name}":`, item.count.toString()));
+    const newCount = Number(
+      prompt(`Edit quantity for "${item.name}":`, item.count.toString())
+    );
     if (!isNaN(newCount) && newCount >= 0) {
       this.cartService.updateItemCount(item, newCount);
     }
+  }
+
+  //-----Final Checkout Logic-----//
+
+  // Clears the cart and resets all preview cards
+  checkoutNow(): void {
+    this.cartService.clearCart(); // ✅ You’ll need this if not already added
+    this.cardDataService.resetCardCounts();
   }
 }
