@@ -7,6 +7,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 
 import { InventoryService } from '../../../../../backend/inventory.service';
 import { CardDataService, Card } from '../../../../../sharedservices/card-data.service';
+import { CartService } from '../../../../../sharedservices/cart.service';
 
 //----- Checkout Component -----//
 
@@ -33,12 +34,16 @@ export class CheckoutComponent {
   private readonly inventoryService = inject(InventoryService);
   readonly cardDataService = inject(CardDataService);
   readonly cardService = this.cardDataService; // Alias for template access
+  readonly cartService = inject(CartService); // Cart service for checkout operations
 
   //----- Computed Totals -----//
 
   // Tracks total price and item count using Angular signals
-  readonly totalPrice = computed(() => this.cardDataService.totalPrice());
-  readonly totalCount = computed(() => this.cardDataService.totalCount());
+  readonly subTotal = this.cartService.subTotal;
+  readonly totalCount = this.cartService.totalCount;
+  readonly tax = this.cartService.tax;
+  readonly total = this.cartService.total;
+  readonly cartItems = this.cartService.cartItems; // Cart items for display
 
   //----- Seasonal Items (Filtered) -----//
 

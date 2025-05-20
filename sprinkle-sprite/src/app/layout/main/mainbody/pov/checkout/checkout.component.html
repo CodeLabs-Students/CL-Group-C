@@ -90,13 +90,16 @@
       <!-- Total item count and subtotal -->
       <div class="summary-line">
         <p>ITEMS:</p>
-        <span>{{ totalCount() }} item(s) at {{ totalPrice() | currency }}</span>
+        <span>{{ totalCount() }} item(s) at {{ total() | currency }}</span>
+        @for (items of cartItems(); track items.name) {
+          <p>{{ items.name }}: {{ items.count }}</p>
+        }
       </div>
 
       <!-- Tax amount based on fixed rate -->
       <div class="summary-line">
         <p>TAXES:</p>
-        <span>{{ .08475 * totalPrice() | currency }}</span>
+        <span>{{ tax() | currency }}</span>
       </div>
 
       <!-- Flat shipping cost (currently free) -->
@@ -108,7 +111,7 @@
       <!-- Combined total (subtotal + tax) -->
       <div class="summary-line total">
         <p>TOTAL:</p>
-        <span>{{ (.08475 * totalPrice()) + totalPrice() | currency }}</span>
+        <span>{{ total | currency }}</span>
       </div>
 
       <hr />
@@ -116,7 +119,7 @@
       <!-- Grand total repeated for emphasis -->
       <div class="summary-line grand-total">
         <p>TOTAL:</p>
-        <span>{{ (.08475 * totalPrice()) + totalPrice() | currency }}</span>
+        <span>{{ total | currency }}</span>
       </div>
 
       <!-- Final checkout button -->
