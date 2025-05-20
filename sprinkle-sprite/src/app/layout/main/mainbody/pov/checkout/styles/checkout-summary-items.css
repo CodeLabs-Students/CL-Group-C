@@ -1,0 +1,53 @@
+.scrollable-cart {
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff3eb;
+  border: 3px solid #2b2b2b;
+  box-shadow: 3px 3px #2b2b2b;
+  font-family: 'Press Start 2P', cursive;
+  padding: 1rem;
+  margin-top: 1rem;
+  font-size: 0.55rem;
+  scrollbar-width: thin;
+  scrollbar-color: #1B4568 #fff3eb;
+}
+
+
+
+.scrollable-cart button {
+  display: inline-block;
+  width: auto;
+  text-align: center;
+  margin-left: 0.25rem;
+  background-color: #baf2d8;
+  border: 2px solid #2b2b2b;
+  box-shadow: 1px 1px #2b2b2b; /* ⬅️ Less chunky */
+  padding: 1px 4px;            /* ⬅️ Tighter size */
+  color: #1B4568;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: bold;
+  font-size: 0.45rem;          /* ⬅️ Slightly smaller text */
+  border-radius: 0.1em;
+  transition: background-color 0.2s;
+  line-height: 1;
+}
+
+.scrollable-cart button:hover {
+  background-color: #f9b5d0;
+}
+/* Webkit (Chrome/Safari/Edge) */
+.scrollable-cart::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollable-cart::-webkit-scrollbar-track {
+  background: #fff3eb;
+}
+.scrollable-cart::-webkit-scrollbar-thumb {
+  background-color: #1B4568;
+  border: 2px solid #fff3eb;
+}
+.scrollable-cart .button-line {
+  display: flex;
+  justify-content: center; /* ✅ Center the buttons horizontally */
+  gap: 0.1rem;
+}

@@ -26,6 +26,7 @@ import { CartActionsService } from '../../../../../sharedservices/cart-actions.s
     './styles/checkout-card-expanded.css',
     './styles/summary-box.css',
     './styles/checkout-media.css',
+    './styles/checkout-summary-items.css',
   ]
 })
 export class CheckoutComponent {

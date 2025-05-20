@@ -71,16 +71,22 @@
         <p>ITEMS:</p>
         <span>{{ totalCount() }} item(s) at {{ subTotal() | currency }}</span>
       </div>
+        @if (totalCount() > 0) {
+  <ul class="cart-item-list scrollable-cart">
+    @for (item of cartItems(); track item.name) {
+      <li class="cart-item">
+        <div class="item-line">
+          <strong>{{ item.count }}</strong> × {{ item.name }}
+        </div>
+        <div class="button-line">
+          <button (click)="editItem(item)">Edit</button>
+          <button (click)="cartService.removeFromCart(item)">Remove</button>
+        </div>
+      </li>
+    }
+  </ul>
+}
 
-      <ul class="cart-item-list scrollable-cart">
-        @for (item of cartItems(); track item.name) {
-          <li class="cart-item">
-            <span><strong>{{ item.count }}</strong> × {{ item.name }}</span>
-            <button (click)="editItem(item)">Edit</button>
-            <button (click)="cartService.removeFromCart(item)">Remove</button>
-          </li>
-        }
-      </ul>
 
       <div class="summary-line">
         <p>TAXES:</p>
