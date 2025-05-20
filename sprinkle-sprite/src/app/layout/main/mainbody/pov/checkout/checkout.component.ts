@@ -77,13 +77,12 @@ export class CheckoutComponent {
     );
   }//----- Cart Item Editing -----//
 
-  /**
-   * Opens a prompt to let the user edit the quantity of a cart item.
-   * - If user enters 0, the item will be removed.
-   * - Invalid entries are ignored.
-   *
-   * @param item - The cart item the user wants to update
-   */
+
+    //Opens a prompt to let the user edit the quantity of a cart item.
+    //- If user enters 0, the item will be removed.
+    //- Invalid entries are ignored.
+
+
   editItem(item: CartItem): void {
     const newCount = Number(prompt(`Edit quantity for "${item.name}":`, item.count.toString()));
     if (!isNaN(newCount) && newCount >= 0) {

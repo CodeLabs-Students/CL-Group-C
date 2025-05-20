@@ -51,7 +51,7 @@
                 <button (click)="cardService.decrease(card)" [disabled]="card.count === 0">−</button>
                 <span>{{ card.count }}</span>
                 <button (click)="cardService.increase(card)">+</button>
-                <button class="checkout-button" (click)="cartActions.addCardToCart(card)">Add to cart</button>
+                <button class="checkout-button" [disabled]="card.count === 0" (click)="cartActions.addCardToCart(card)">Add to cart</button>
               </div>
             </div>
           }
@@ -69,10 +69,10 @@
 
       <div class="summary-line">
         <p>ITEMS:</p>
-        <span>{{ totalCount() }} item(s) at {{ total() | currency }}</span>
+        <span>{{ totalCount() }} item(s) at {{ subTotal() | currency }}</span>
       </div>
 
-      <ul class="cart-item-list">
+      <ul class="cart-item-list scrollable-cart">
         @for (item of cartItems(); track item.name) {
           <li class="cart-item">
             <span><strong>{{ item.count }}</strong> × {{ item.name }}</span>
@@ -92,12 +92,6 @@
         <span>$0.00</span>
       </div>
 
-      <div class="summary-line total">
-        <p>TOTAL:</p>
-        <span>{{ total() | currency }}</span>
-      </div>
-
-      <hr />
 
       <div class="summary-line grand-total">
         <p>TOTAL:</p>

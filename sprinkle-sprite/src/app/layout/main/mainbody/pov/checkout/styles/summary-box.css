@@ -64,3 +64,9 @@
   background-color: #f9b5d0;
 }
 
+.scrollable-cart {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 2px solid #2b2b2b;
+  padding-right: 0.5rem;
+}
