@@ -5,9 +5,11 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 
 //----- App Services -----//
 
-import { InventoryService } from '../../../../../backend/inventory.service';
+import { Flavor, InventoryService } from '../../../../../backend/inventory.service';
 import { CardDataService, Card } from '../../../../../sharedservices/card-data.service';
 import { CartService } from '../../../../../sharedservices/cart.service';
+import type { CartItem } from '../../../../../sharedservices/cart.service';
+import { CartActionsService } from '../../../../../sharedservices/cart-actions.service';
 
 //----- Checkout Component -----//
 
@@ -35,6 +37,7 @@ export class CheckoutComponent {
   readonly cardDataService = inject(CardDataService);
   readonly cardService = this.cardDataService; // Alias for template access
   readonly cartService = inject(CartService); // Cart service for checkout operations
+  readonly cartActions = inject(CartActionsService);
 
   //----- Computed Totals -----//
 
@@ -72,5 +75,19 @@ export class CheckoutComponent {
     this.seasonalItems = this.cardDataService.cards.filter(
       (card) => card.rarity === 'Seasonal'
     );
+  }//----- Cart Item Editing -----//
+
+  /**
+   * Opens a prompt to let the user edit the quantity of a cart item.
+   * - If user enters 0, the item will be removed.
+   * - Invalid entries are ignored.
+   *
+   * @param item - The cart item the user wants to update
+   */
+  editItem(item: CartItem): void {
+    const newCount = Number(prompt(`Edit quantity for "${item.name}":`, item.count.toString()));
+    if (!isNaN(newCount) && newCount >= 0) {
+      this.cartService.updateItemCount(item, newCount);
+    }
   }
 }

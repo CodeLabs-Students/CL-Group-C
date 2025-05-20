@@ -78,7 +78,7 @@
           <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
           <span>{{ card.count }}</span>
           <button (click)="increase(card)">+</button>
-          <button class="checkout-button">Add to cart</button>
+          <button class="checkout-button" (click)="cartActions.addCardToCart(card)">Add to cart</button>
         </div>
       </li>
     }

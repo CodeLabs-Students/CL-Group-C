@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { InventoryService, Flavor } from '../../../../../backend/inventory.service';
 import { CardDataService, Card } from '../../../../../sharedservices/card-data.service';
+import { CartActionsService } from '../../../../../sharedservices/cart-actions.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,9 +27,11 @@ export class MenuComponent implements OnInit {
   // - InventoryService: fetches raw flavor data from the backend
   // - CardDataService: manages shared card state across views
   constructor(
-    private inventoryService: InventoryService,
-    private cardService: CardDataService
-  ) {}
+  private inventoryService: InventoryService,
+  public cardService: CardDataService,
+  public cartActions: CartActionsService
+) {}
+
 
   //-----Lifecycle-----//
 
