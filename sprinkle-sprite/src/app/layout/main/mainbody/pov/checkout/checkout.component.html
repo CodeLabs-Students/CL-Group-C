@@ -51,7 +51,7 @@
                 <button (click)="cardService.decrease(card)" [disabled]="card.count === 0">−</button>
                 <span>{{ card.count }}</span>
                 <button (click)="cardService.increase(card)">+</button>
-                <button class="checkout-button" [disabled]="card.count === 0" (click)="cartActions.addCardToCart(card)">Add to cart</button>
+                <button class="checkout-button" [disabled]="card.count === 0"  (click)="cartActions.addCardToCart(card)">Add to cart</button>
               </div>
             </div>
           }
@@ -64,7 +64,7 @@
     </div>
 
     <!------- RIGHT COLUMN: Summary / Totals Panel ------->
-    <section class="summary">
+    <section class="summary" [class.hidden]="thankYouShown">
       <h3>CHECKOUT</h3>
 
       <div class="summary-line">
@@ -108,6 +108,13 @@
         <button class="checkout-now" (click)="checkoutNow()">CHECKOUT NOW</button>
       </div>
     </section>
-
+    @if (thankYouShown) {
+  <section class="thank-you-confirmation">
+    <img src="assets/images/conecount3.png" alt="Ice Cream Mascot" class="victory-sprite" />
+    <h2><img src="assets/resources/vip_Icons/seasonal_Icon.png" alt="Ice Cream" class="victory-emote"  /> THANK YOU!</h2>
+    <p>Your purchase was magical.</p>
+    <p>We’ll see you next scoop!</p>
+  </section>
+}
   </div>
 </main>

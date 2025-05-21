@@ -101,9 +101,17 @@ export class CheckoutComponent {
 
   //-----Final Checkout Logic-----//
 
+
+    thankYouShown = false;
+
   // Clears the cart and resets all preview cards
   checkoutNow(): void {
-    this.cartService.clearCart(); // ✅ You’ll need this if not already added
+    if (this.totalCount() === 0) return;
+
+
+    this.cartService.clearCart();
     this.cardDataService.resetCardCounts();
+
+    this.thankYouShown = true;
   }
 }

@@ -5,7 +5,53 @@
 
 
 
+.summary.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
 
+.thank-you-confirmation {
+  text-align: center;
+  background-color: #fff3eb;
+  border: 3px solid #2b2b2b;
+  box-shadow: 4px 4px #2b2b2b;
+  padding: 2rem;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 2rem;
+  animation: fadeIn 0.6s ease forwards;
+  color: #1B4568;
+}
+.victory-emote{
+  width: 44px;
+  vertical-align: bottom;
+  margin-right: 0.5rem;
+  image-rendering: pixelated;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
+.victory-sprite {
+  width: 96px;
+  height: auto;
+  margin-bottom: 1rem;
+  animation: popBounce 0.8s ease-out forwards;
+  image-rendering: pixelated; /* ✅ keeps it crisp */
+}
 
+@keyframes popBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
 
