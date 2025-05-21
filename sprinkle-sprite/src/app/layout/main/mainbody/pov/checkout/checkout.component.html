@@ -1,9 +1,7 @@
 <main class="checkout-hero">
   <div class="checkout-body">
 
-
     <!------- LEFT COLUMN: Message + Seasonal Items List ------->
-
     <div class="checkout-left">
 
       <!-- Thank-you message shown at the top of checkout view -->
@@ -18,31 +16,19 @@
 
       <!-- If seasonalItems exists, render the list -->
       @if (seasonalItems.length > 0) {
-
         <div class="checkout-items">
 
           <!-- Render each seasonal card from shared card list -->
           @for (card of seasonalItems; track card.id) {
-
-            <div
-              class="checkout-card"
-              [class.expanded]="card.expanded"
-              (click)="cardService.toggleCard(card)"
-            >
-
-              <!-- Display the card title and description -->
+            <div class="checkout-card" [class.expanded]="card.expanded" (click)="cardService.toggleCard(card)">
               <h3 [title]="card.title">{{ card.title }}</h3>
               <p [title]="card.description">{{ card.description }}</p>
 
-              <!-- Show expanded card info if clicked -->
               @if (card.expanded) {
                 <div class="expanded-info">
-
-                  <!-- Price and rarity breakdown -->
                   <p><strong>Price:</strong> ${{ card.price }}</p>
                   <p><strong>Rarity:</strong> {{ card.rarity }}</p>
 
-                  <!-- Display icon for the rarity type -->
                   @if (card.rarity === 'Uncommon') {
                     <img class="icon" src="assets/resources/vip_Icons/uncommon_Icon.png" alt="Uncommon" />
                   }
@@ -61,70 +47,74 @@
                 </div>
               }
 
-              <!-- Quantity control buttons -->
               <div class="card-controls" (click)="$event.stopPropagation()">
                 <button (click)="cardService.decrease(card)" [disabled]="card.count === 0">−</button>
                 <span>{{ card.count }}</span>
                 <button (click)="cardService.increase(card)">+</button>
-                <button class="checkout-button">Add to cart</button>
+                <button class="checkout-button" [disabled]="card.count === 0"  (click)="cartActions.addCardToCart(card)">Add to cart</button>
               </div>
-
             </div>
           }
         </div>
       }
-
-      <!-- If there are no seasonal items, show fallback message -->
       @else {
         <p>No seasonal items available.</p>
       }
 
     </div>
 
-
     <!------- RIGHT COLUMN: Summary / Totals Panel ------->
-
-    <section class="summary">
+    <section class="summary" [class.hidden]="thankYouShown()">
       <h3>CHECKOUT</h3>
 
-      <!-- Total item count and subtotal -->
       <div class="summary-line">
         <p>ITEMS:</p>
-        <span>{{ totalCount() }} item(s) at {{ totalPrice() | currency }}</span>
+        <span>{{ totalCount() }} item(s) at {{ subTotal() | currency }}</span>
       </div>
+        @if (totalCount() > 0) {
+  <ul class="cart-item-list scrollable-cart">
+    @for (item of cartItems(); track item.name) {
+      <li class="cart-item">
+        <div class="item-line">
+          <strong>{{ item.count }}</strong> × {{ item.name }}
+        </div>
+        <div class="button-line">
+          <button (click)="editItem(item)">Edit</button>
+          <button (click)="cartService.removeFromCart(item)">Remove</button>
+        </div>
+      </li>
+    }
+  </ul>
+}
 
-      <!-- Tax amount based on fixed rate -->
+
       <div class="summary-line">
         <p>TAXES:</p>
-        <span>{{ .08475 * totalPrice() | currency }}</span>
+        <span>{{ tax() | currency }}</span>
       </div>
 
-      <!-- Flat shipping cost (currently free) -->
       <div class="summary-line">
         <p>SHIPPING:</p>
         <span>$0.00</span>
       </div>
 
-      <!-- Combined total (subtotal + tax) -->
-      <div class="summary-line total">
-        <p>TOTAL:</p>
-        <span>{{ (.08475 * totalPrice()) + totalPrice() | currency }}</span>
-      </div>
 
-      <hr />
-
-      <!-- Grand total repeated for emphasis -->
       <div class="summary-line grand-total">
         <p>TOTAL:</p>
-        <span>{{ (.08475 * totalPrice()) + totalPrice() | currency }}</span>
+        <span>{{ total() | currency }}</span>
       </div>
 
-      <!-- Final checkout button -->
       <div class="checkout-btn-wrapper">
-        <button class="checkout-now">CHECKOUT NOW</button>
+        <button class="checkout-now" (click)="checkoutNow()">CHECKOUT NOW</button>
       </div>
-
     </section>
-
+    @if (thankYouShown()) {
+  <section class="thank-you-confirmation">
+    <img src="assets/images/conecount3.png" alt="Ice Cream Mascot" class="victory-sprite" />
+    <h2><img src="assets/resources/vip_Icons/seasonal_Icon.png" alt="Ice Cream" class="victory-emote"  /> THANK YOU!</h2>
+    <p>Your purchase was magical.</p>
+    <p>We’ll see you next scoop!</p>
+  </section>
+}
   </div>
 </main>

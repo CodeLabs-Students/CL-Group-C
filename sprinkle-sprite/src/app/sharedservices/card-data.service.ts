@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Flavor, InventoryService } from '../backend/inventory.service';
-import { signal } from '@angular/core';
+
 
 //-----Interface area-----//
 
@@ -11,12 +11,15 @@ import { signal } from '@angular/core';
 
 export interface Card {
   id: number;             // Unique ID assigned during mapping
+  name: string;
   title: string;          // Flavor name (from InventoryService)
   description: string;    // Flavor description
   price: number;          // Cost of the item
   rarity: string;         // Rarity label (linked to XP value)
   count: number;          // Quantity selected by the user
   expanded?: boolean;     // UI flag for expanded card view
+  max: number;            // Max quantity available for this card
+  stock: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -29,8 +32,6 @@ export class CardDataService {
   // Holds the shared list of all mapped cards used by the app.
   // Populated once using setFromFlavors() and accessed by all POVs.
   cards: Card[] = [];
-  totalPrice = signal<number>(0); // Total price of all selected items
-  totalCount = signal<number>(0); // Total count of all selected items
 
 
   //-----Data Mapping-----//
@@ -47,35 +48,43 @@ export class CardDataService {
   setFromFlavors(flavors: Flavor[]): void {
     this.cards = flavors.map((flavor, index) => ({
       id: index + 1,
+      name: flavor.name,
       title: flavor.name,
       description: flavor.description,
       price: flavor.price,
       rarity: flavor.rarity,
       count: 0,
       expanded: false,
+      max: flavor.stock ?? 99,
+      stock: flavor.stock ?? 99,
     }));
   }
 
-  //-----Count Logic Section-----//
+//-----Count Control Logic-----//
 
-  //button logic to increase count for card
-  increase(card: Card): void {
-    card.count++;
-    this.totalPrice.update(tp => tp + card.price); // Increment total price
-    this.totalCount.update(tc => tc + 1); // Increment total count
-    console.log(this.totalPrice(), this.totalCount());
-    console.log('Total Count:', this.totalCount());
+// Increases the count value for a specific card.
+// This change is for preview only and does not affect the cart.
+increase(card: Card): void {
+  if (card.count >= card.max) return;
+  card.count++;
+}
+
+// Decreases the count value for a specific card.
+// Prevents the count from going below 0.
+// This change is for preview only and does not affect the cart.
+decrease(card: Card): void {
+  if (card.count > 0) {
+    card.count--;
   }
-  //button logic to decrease count for card
-  decrease(card: Card): void {
-    if (card.count > 0) {
-      card.count--;
-       this.totalPrice.update(tp => tp - card.price); // Decrement total price
-      this.totalCount.update(tc => tc - 1); // Decrement total count
-      console.log('Total Count:', this.totalCount());
-      console.log('Total Price:', this.totalPrice());
-    }
-  }
+}
+
+resetCardCounts(): void {
+  this.cards.forEach(card => {
+    card.count = 0;
+    card.expanded = false;
+  });
+}
+
 
   //-----Card View Toggle Logic-----//
 

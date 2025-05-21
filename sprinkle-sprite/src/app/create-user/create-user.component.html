@@ -1,46 +1,60 @@
+<!-- Outer container for page background styling -->
 <div class="login-hero">
+  <!-- Main centered form container -->
   <div class="login-container">
+
+    <!-- Page header -->
     <h2>🎉 Create Your Sprinkle Sprite Account 🎉</h2>
 
+    <!-- Form element (uses submit event) -->
     <form (submit)="handleCreateAccount()">
+
+      <!-- Username field -->
       <label for="username">Username:</label>
       <input
         id="username"
         type="text"
         required
-        (input)="username.set($any($event.target).value)"
-      />
+        (input)="username.set($any($event.target).value)" /> <!-- Updates username signal -->
 
+
+      <!-- Email field -->
       <label for="email">Email:</label>
       <input
         id="email"
         type="email"
         required
-        (input)="email.set($any($event.target).value)"
-      />
+        (input)="email.set($any($event.target).value)" /> <!-- Updates email signal -->
 
+
+      <!-- Password field -->
       <label for="password">Password:</label>
       <input
         id="password"
         type="password"
         required
-        (input)="password.set($any($event.target).value)"
-      />
+        (input)="password.set($any($event.target).value)" /> <!-- Updates password signal -->
 
+
+      <!-- Confirm password field -->
       <label for="confirm">Confirm Password:</label>
       <input
         id="confirm"
         type="password"
         required
-        (input)="confirmPassword.set($any($event.target).value)"
-      />
+        (input)="confirmPassword.set($any($event.target).value)" /> <!-- Updates confirmPassword signal -->
 
+
+      <!-- Submit button -->
       <button type="submit">Create Account</button>
 
+      <!-- Optional nav link back to login screen -->
       <p class="note">
         Already have an account?
         <a [routerLink]="['/login']">Back to Login</a>
       </p>
     </form>
+
   </div>
 </div>
+

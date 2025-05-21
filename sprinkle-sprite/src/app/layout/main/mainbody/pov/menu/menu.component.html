@@ -77,8 +77,8 @@
         <div class="card-controls" (click)="$event.stopPropagation()">
           <button (click)="decrease(card)" [disabled]="card.count === 0">−</button>
           <span>{{ card.count }}</span>
-          <button (click)="increase(card)">+</button>
-          <button class="checkout-button">Add to cart</button>
+          <button (click)="cardService.increase(card)" [disabled]="card.count >= card.max">+</button>
+          <button class="checkout-button" (click)="cartActions.addCardToCart(card)">Add to cart</button>
         </div>
       </li>
     }
