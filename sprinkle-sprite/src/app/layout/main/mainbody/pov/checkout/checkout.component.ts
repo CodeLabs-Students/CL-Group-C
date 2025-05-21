@@ -68,7 +68,6 @@ export class CheckoutComponent {
     effect(() => {
       const count = this.totalCount();
       if (this.thankYouShown && count > 0) {
-        console.log('[✔] Item added after checkout — restoring summary.');
         this.thankYouShown = false;
       }
     });
