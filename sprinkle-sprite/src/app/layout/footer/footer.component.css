@@ -1,0 +1,45 @@
+.footer {
+  position: relative;
+  background-color: #f3c5ff;
+  padding: 1.5rem 1rem 1rem 1rem;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  color: #2b2b2b;
+  line-height: 1.8;
+  overflow: hidden;
+  z-index: 1;
+}
+.footer-emoji{
+  width: 40px;
+  vertical-align: bottom;
+  margin-right: 0.5rem;
+  image-rendering: pixelated;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px; /* Height of border */
+  width: 100%;
+  background: linear-gradient(
+    270deg,
+    #ff5f6d,
+    #ffc371,
+    #47fced,
+    #6a5acd,
+    #f78dc0,
+    #ff5f6d
+  );
+  background-size: 1000% 100%;
+  animation: rainbowBorder 6s linear infinite;
+}
+@keyframes rainbowBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
