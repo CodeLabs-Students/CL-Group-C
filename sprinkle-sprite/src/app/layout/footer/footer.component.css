@@ -12,6 +12,7 @@
 }
 .footer-emoji{
   width: 40px;
+  height: auto;
   vertical-align: bottom;
   margin-right: 0.5rem;
   image-rendering: pixelated;
