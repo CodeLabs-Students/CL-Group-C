@@ -63,18 +63,23 @@ export class CheckoutComponent {
 
   //----- Reactive Cart Watcher -----//
 
-  // Reactively restores the summary box if a new item is added after checkout
-  constructor() {
-    effect(() => {
-      const count = this.totalCount();
-      const wasShown = this.thankYouShown();
+// Runs once when the component is created.
+// - Sets up a reactive effect that listens to signal changes
+// - Tracks the total cart count (totalCount())
+// - Tracks whether the thank-you screen is currently showing (thankYouShown())
+// - If a new item is added after checkout, it auto-hides the thank-you screen
+constructor() {
+  effect(() => {
+    const count = this.totalCount();         // Reactive signal for how many items are in the cart
+    const wasShown = this.thankYouShown();   // Reactive signal for whether thank-you screen is showing
 
+    // If thank-you was active and a new item was added, restore the summary view
+    if (wasShown && count > 0) {
+      this.thankYouShown.set(false);
+    }
+  });
+}
 
-      if (this.thankYouShown && count > 0) {
-        this.thankYouShown.set(false);
-      }
-    });
-  }
 
   //----- Lifecycle Hook -----//
 
