@@ -7,6 +7,7 @@ import { HomeComponent } from './layout/main/mainbody/pov/home/home.component';
 import { AccountComponent } from './layout/main/mainbody/pov/account/account.component';
 import { CheckoutComponent } from './layout/main/mainbody/pov/checkout/checkout.component';
 import { MenuComponent } from './layout/main/mainbody/pov/menu/menu.component';
+import { PageNotFoundComponent } from './layout/page-not-found/page-not-found.component';
 
 //-----Route Configuration-----//
 
@@ -48,5 +49,9 @@ export const routes: Routes = [
     path: 'vip-rewards',
     loadComponent: () =>
       import('./rewards/vip-rewards.component').then((m) => m.VipRewardsComponent),
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
