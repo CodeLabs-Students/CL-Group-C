@@ -1,6 +1,6 @@
 //----- Angular Core & Common Utilities -----//
 
-import { Component, inject, computed, effect } from '@angular/core';
+import { Component, inject,effect, signal } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
 //----- App Services -----//
@@ -59,7 +59,7 @@ export class CheckoutComponent {
 
   //----- UI State Flags -----//
 
-  thankYouShown = false; // Triggers thank-you confirmation after checkout
+  thankYouShown = signal(false); // Triggers thank-you confirmation after checkout
 
   //----- Reactive Cart Watcher -----//
 
@@ -67,8 +67,11 @@ export class CheckoutComponent {
   constructor() {
     effect(() => {
       const count = this.totalCount();
+      const wasShown = this.thankYouShown();
+
+
       if (this.thankYouShown && count > 0) {
-        this.thankYouShown = false;
+        this.thankYouShown.set(false);
       }
     });
   }
@@ -141,6 +144,6 @@ export class CheckoutComponent {
 
     this.cartService.clearCart(); // Wipes cart state
     this.cardDataService.resetCardCounts(); // Resets preview counts
-    this.thankYouShown = true; // Triggers thank-you message
+    this.thankYouShown.set(true); // Triggers thank-you message
   }
 }

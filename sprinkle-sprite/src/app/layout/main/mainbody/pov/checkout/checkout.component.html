@@ -64,7 +64,7 @@
     </div>
 
     <!------- RIGHT COLUMN: Summary / Totals Panel ------->
-    <section class="summary" [class.hidden]="thankYouShown">
+    <section class="summary" [class.hidden]="thankYouShown()">
       <h3>CHECKOUT</h3>
 
       <div class="summary-line">
@@ -108,7 +108,7 @@
         <button class="checkout-now" (click)="checkoutNow()">CHECKOUT NOW</button>
       </div>
     </section>
-    @if (thankYouShown) {
+    @if (thankYouShown()) {
   <section class="thank-you-confirmation">
     <img src="assets/images/conecount3.png" alt="Ice Cream Mascot" class="victory-sprite" />
     <h2><img src="assets/resources/vip_Icons/seasonal_Icon.png" alt="Ice Cream" class="victory-emote"  /> THANK YOU!</h2>
