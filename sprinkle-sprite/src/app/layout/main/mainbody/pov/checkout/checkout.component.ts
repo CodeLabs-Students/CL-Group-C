@@ -1,12 +1,18 @@
 //----- Angular Core & Common Utilities -----//
 
-import { Component, inject, computed } from '@angular/core';
+import { Component, inject, computed, effect } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 
 //----- App Services -----//
 
-import { Flavor, InventoryService } from '../../../../../backend/inventory.service';
-import { CardDataService, Card } from '../../../../../sharedservices/card-data.service';
+import {
+  Flavor,
+  InventoryService,
+} from '../../../../../backend/inventory.service';
+import {
+  CardDataService,
+  Card,
+} from '../../../../../sharedservices/card-data.service';
 import { CartService } from '../../../../../sharedservices/cart.service';
 import type { CartItem } from '../../../../../sharedservices/cart.service';
 import { CartActionsService } from '../../../../../sharedservices/cart-actions.service';
@@ -33,85 +39,109 @@ import { CartActionsService } from '../../../../../sharedservices/cart-actions.s
 export class CheckoutComponent {
   //----- Service Injection -----//
 
-  // Inject backend and shared card services
-  private readonly inventoryService = inject(InventoryService);
-  readonly cardDataService = inject(CardDataService);
-  readonly cardService = this.cardDataService; // Alias for template access
-  readonly cartService = inject(CartService); // Cart service for checkout operations
-  readonly cartActions = inject(CartActionsService);
+  private readonly inventoryService = inject(InventoryService); // Pulls in full flavor data
+  readonly cardDataService = inject(CardDataService); // Provides seasonal card mapping and UI state
+  readonly cardService = this.cardDataService; // Alias used by the template
+  readonly cartService = inject(CartService); // Manages live cart signal state
+  readonly cartActions = inject(CartActionsService); // Handles cart logic on Add to Cart button
 
-  //----- Computed Totals -----//
+  //----- Computed Totals (Signals) -----//
 
-  // Tracks total price and item count using Angular signals
-  readonly subTotal = this.cartService.subTotal;
-  readonly totalCount = this.cartService.totalCount;
-  readonly tax = this.cartService.tax;
-  readonly total = this.cartService.total;
-  readonly cartItems = this.cartService.cartItems; // Cart items for display
+  readonly subTotal = this.cartService.subTotal; // Cart subtotal before tax
+  readonly totalCount = this.cartService.totalCount; // Total item count in cart
+  readonly tax = this.cartService.tax; // Tax computed on subtotal
+  readonly total = this.cartService.total; // Total including tax
+  readonly cartItems = this.cartService.cartItems; // Signal list of items in the cart
 
   //----- Seasonal Items (Filtered) -----//
 
-  // Holds only cards marked as "Seasonal" rarity
-  seasonalItems: Card[] = [];
+  seasonalItems: Card[] = []; // Holds only "Seasonal" rarity cards
+
+  //----- UI State Flags -----//
+
+  thankYouShown = false; // Triggers thank-you confirmation after checkout
+
+  //----- Reactive Cart Watcher -----//
+
+  // Reactively restores the summary box if a new item is added after checkout
+  constructor() {
+    effect(() => {
+      const count = this.totalCount();
+      if (this.thankYouShown && count > 0) {
+        console.log('[✔] Item added after checkout — restoring summary.');
+        this.thankYouShown = false;
+      }
+    });
+  }
 
   //----- Lifecycle Hook -----//
 
-  // On component load, populate cards if not already set,
-  // then filter the list to only seasonal cards
+  // Runs when the component first loads.
+  // - Checks if cards have already been initialized
+  // - If not, fetches flavor data from the backend
+  // - Maps that data into card objects
+  // - Then filters out only seasonal cards for display
   ngOnInit(): void {
+    // If this is the first time loading, fetch from backend
     if (this.cardDataService.cards.length === 0) {
       this.inventoryService.getFlavors().subscribe((flavors) => {
-        this.cardDataService.setFromFlavors(flavors); // Load all cards from inventory
-        this.filterSeasonal(); // Filter seasonal cards
+        this.cardDataService.setFromFlavors(flavors); // Convert raw flavors into card objects
+        this.filterSeasonal(); // Only keep cards marked as "Seasonal"
       });
     } else {
+      // If data already exists, just filter it
       this.filterSeasonal();
     }
   }
 
-  //----- Filtering Logic -----//
+  //----- Seasonal Filter Logic -----//
 
-  // Filters out cards that are not labeled as "Seasonal"
+  // Filters mapped cards down to those marked "Seasonal"
   private filterSeasonal(): void {
     this.seasonalItems = this.cardDataService.cards.filter(
       (card) => card.rarity === 'Seasonal'
     );
   }
 
+  //----- Cart Editing (Prompt UI) -----//
 
-  //----- Cart Item Editing -----//
-
-  //Opens a prompt to let the user edit the quantity of a cart item.
-  //- If user enters 0, the item will be removed.
-  //- Invalid entries are ignored.
-
+  // Opens a manual prompt so the user can change how many of this item they want.
+  // This is a quick and dirty way to adjust quantities directly in the cart view.
+  // - If user enters 0, the item will be removed.
+  // - If they enter too many, we cap it at the stock limit (defaults to 99).
+  // - If the stock cap is hit, we show an alert letting them know.
+  //
+  // NOTE: This will eventually be replaced by a proper modal or input field.
   editItem(item: CartItem): void {
+    // Show a prompt pre-filled with the current count
     const newCount = Number(
       prompt(`Edit quantity for "${item.name}":`, item.count.toString())
     );
+
+    // Only continue if the user entered a real number (and not a letter or blank)
     if (!isNaN(newCount) && newCount >= 0) {
+      // Limit the quantity to whatever stock is available (or 99 if not provided)
       const limitedCount = Math.min(newCount, item.stock ?? 99);
+
+      // Apply the new (or capped) quantity to the cart
       this.cartService.updateItemCount(item, limitedCount);
     }
-    if (newCount > (item.stock ?? 99)) {
-  alert(`Only ${item.stock} in stock. Quantity set to ${item.stock}.`);
-}
 
+    // If the user tried to go over the limit, give them a warning
+    if (newCount > (item.stock ?? 99)) {
+      alert(`Only ${item.stock} in stock. Quantity set to ${item.stock}.`);
+    }
   }
 
-  //-----Final Checkout Logic-----//
+  //----- Final Checkout Flow -----//
 
-
-    thankYouShown = false;
-
-  // Clears the cart and resets all preview cards
+  // Clears the cart and resets all local card preview counts.
+  // Triggers thank-you confirmation and hides the summary section.
   checkoutNow(): void {
     if (this.totalCount() === 0) return;
 
-
-    this.cartService.clearCart();
-    this.cardDataService.resetCardCounts();
-
-    this.thankYouShown = true;
+    this.cartService.clearCart(); // Wipes cart state
+    this.cardDataService.resetCardCounts(); // Resets preview counts
+    this.thankYouShown = true; // Triggers thank-you message
   }
 }
