@@ -9,6 +9,7 @@ export interface Flavor {
   description: string;
   price: number;
   rarity: string;
+  stock: number;
 }
 
 @Injectable({

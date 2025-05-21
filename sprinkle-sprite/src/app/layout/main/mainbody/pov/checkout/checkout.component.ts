@@ -76,7 +76,10 @@ export class CheckoutComponent {
     this.seasonalItems = this.cardDataService.cards.filter(
       (card) => card.rarity === 'Seasonal'
     );
-  } //----- Cart Item Editing -----//
+  }
+
+
+  //----- Cart Item Editing -----//
 
   //Opens a prompt to let the user edit the quantity of a cart item.
   //- If user enters 0, the item will be removed.
@@ -87,8 +90,13 @@ export class CheckoutComponent {
       prompt(`Edit quantity for "${item.name}":`, item.count.toString())
     );
     if (!isNaN(newCount) && newCount >= 0) {
-      this.cartService.updateItemCount(item, newCount);
+      const limitedCount = Math.min(newCount, item.stock ?? 99);
+      this.cartService.updateItemCount(item, limitedCount);
     }
+    if (newCount > (item.stock ?? 99)) {
+  alert(`Only ${item.stock} in stock. Quantity set to ${item.stock}.`);
+}
+
   }
 
   //-----Final Checkout Logic-----//

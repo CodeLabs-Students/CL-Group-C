@@ -18,6 +18,8 @@ export interface Card {
   rarity: string;         // Rarity label (linked to XP value)
   count: number;          // Quantity selected by the user
   expanded?: boolean;     // UI flag for expanded card view
+  max: number;            // Max quantity available for this card
+  stock: number;
 }
 @Injectable({
   providedIn: 'root',
@@ -53,6 +55,8 @@ export class CardDataService {
       rarity: flavor.rarity,
       count: 0,
       expanded: false,
+      max: flavor.stock ?? 99,
+      stock: flavor.stock ?? 99,
     }));
   }
 
@@ -61,6 +65,7 @@ export class CardDataService {
 // Increases the count value for a specific card.
 // This change is for preview only and does not affect the cart.
 increase(card: Card): void {
+  if (card.count >= card.max) return;
   card.count++;
 }
 
