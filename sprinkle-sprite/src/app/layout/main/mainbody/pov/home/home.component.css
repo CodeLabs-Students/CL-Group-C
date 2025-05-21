@@ -58,3 +58,17 @@
   background-color: #f9b5d0;
 }
 
+.image-container-home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.logo-img,
+.tag-img {
+  display: block;
+  height: auto;
+}
