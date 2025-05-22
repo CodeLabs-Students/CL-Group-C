@@ -1,0 +1,104 @@
+import { Injectable } from '@angular/core';
+import { Flavor, InventoryService } from '../backend/inventory.service';
+
+
+//-----Interface area-----//
+
+
+ //Represents a single ice cream flavor card used in the menu,
+ //checkout, and cart systems. Each card is initialized from
+ //a Flavor object and can track quantity and UI expansion state.
+
+export interface Card {
+  id: number;             // Unique ID assigned during mapping
+  name: string;
+  title: string;          // Flavor name (from InventoryService)
+  description: string;    // Flavor description
+  price: number;          // Cost of the item
+  rarity: string;         // Rarity label (linked to XP value)
+  count: number;          // Quantity selected by the user
+  expanded?: boolean;     // UI flag for expanded card view
+  max: number;            // Max quantity available for this card
+  stock: number;
+}
+@Injectable({
+  providedIn: 'root',
+})
+export class CardDataService {
+
+  //-----State section-----//
+
+
+  // Holds the shared list of all mapped cards used by the app.
+  // Populated once using setFromFlavors() and accessed by all POVs.
+  cards: Card[] = [];
+
+
+  //-----Data Mapping-----//
+
+  //Converts the raw Flavor data from InventoryService into Card objects
+  //used throughout the app. This method is typically called once on init
+  //to populate the menu and checkout views with a shared card list.
+
+  // Each card is initialized with:
+  //- a unique ID
+  //- mapped flavor info (name, description, price, rarity)
+  //- count set to 0
+  //- expanded state set to false
+  setFromFlavors(flavors: Flavor[]): void {
+    this.cards = flavors.map((flavor, index) => ({
+      id: index + 1,
+      name: flavor.name,
+      title: flavor.name,
+      description: flavor.description,
+      price: flavor.price,
+      rarity: flavor.rarity,
+      count: 0,
+      expanded: false,
+      max: flavor.stock ?? 99,
+      stock: flavor.stock ?? 99,
+    }));
+  }
+
+//-----Count Control Logic-----//
+
+// Increases the count value for a specific card.
+// This change is for preview only and does not affect the cart.
+increase(card: Card): void {
+  if (card.count >= card.max) return;
+  card.count++;
+}
+
+// Decreases the count value for a specific card.
+// Prevents the count from going below 0.
+// This change is for preview only and does not affect the cart.
+decrease(card: Card): void {
+  if (card.count > 0) {
+    card.count--;
+  }
+}
+
+resetCardCounts(): void {
+  this.cards.forEach(card => {
+    card.count = 0;
+    card.expanded = false;
+  });
+}
+
+
+  //-----Card View Toggle Logic-----//
+
+
+  //Logic to switch card view from default to expanded
+  toggleCard(card: Card): void {
+    const isAlreadyExpanded = card.expanded;
+
+    // Collapse all cards
+    this.cards.forEach(container => (container.expanded = false));
+
+    // Expand the clicked one (if not already)
+    if (!isAlreadyExpanded) {
+      card.expanded = true;
+    }
+  }
+}

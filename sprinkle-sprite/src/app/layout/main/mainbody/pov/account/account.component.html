@@ -1,45 +1,56 @@
 <main class="account-hero">
   <div class="account-box">
+
+    <!-- Page header -->
     <div class="account-header">PROFILE</div>
 
-    <a routerLink="/login">
-      <button class="account-button" (click)="goToLogin()">
-        <img src="assets/resources/icons/account_Icon.png" alt="Account icon" />
-        LOGIN
-      </button>
-    </a>
+    <!-- LOGIN Button -->
+    <!-- Navigates to the login page using goToLogin() -->
+    <button class="account-button" (click)="goToLogin()">
+      <img src="assets/resources/icons/account_Icon.webp" alt="Account icon" width="48" height="48" />
+      LOGIN
+    </button>
 
+    <!-- FAVORITES Button -->
+    <!-- Placeholder for user favorites (not wired yet) -->
     <button class="account-button">
-      <img src="assets/resources/icons/heart_selected.png" alt="Favorites" />
+      <img src="assets/resources/icons/heart_selected.webp" alt="Favorites" width="48" height="48" />
       FAVORITES
     </button>
 
+    <!-- ADDRESS Button -->
+    <!-- Placeholder for saved address (not wired yet) -->
     <button class="account-button">
-      <img src="assets/resources/icons/address.png" alt="Address" />
+      <img src="assets/resources/icons/address.webp" alt="Address" width="48" height="48" />
       ADDRESS
     </button>
 
+    <!-- VIP MEMBERSHIP Button -->
+    <!-- Navigates to the VIP page using goToVip() -->
+    <!-- Includes animated ice cream icons for flair -->
     <button class="account-button" (click)="goToVip()">
-      <img src="assets/resources/icons/vip.png" alt="VIP" />
+      <img src="assets/resources/icons/vip.webp" alt="VIP" width="48" height="48" />
       VIP MEMBERSHIP
+      <!-- Animated ice cream visuals (rarity themed) -->
       <div class="ice-cream" style="left: 5%; animation-delay: 0s;">
-        <img src="assets/resources/vip_Icons/common_Icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/common_Icon.webp" alt="ice cream" width="48" height="48" />
       </div>
       <div class="ice-cream" style="left: 20%; animation-delay: 1.2s;">
-        <img src="assets/resources/vip_Icons/uncommon_Icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/uncommon_Icon.webp" alt="ice cream" width="48" height="48" />
       </div>
       <div class="ice-cream" style="left: 35%; animation-delay: 2.4s;">
-        <img src="assets/resources/vip_Icons/rare_icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/rare_icon.webp" alt="ice cream" width="48" height="48" />
       </div>
       <div class="ice-cream" style="left: 50%; animation-delay: 1.6s;">
-        <img src="assets/resources/vip_Icons/seasonal_Icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/seasonal_Icon.webp" alt="ice cream" width="48" height="48" />
       </div>
       <div class="ice-cream" style="left: 70%; animation-delay: 0.8s;">
-        <img src="assets/resources/vip_Icons/legendary_Icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/legendary_Icon.webp" alt="ice cream" width="48" height="48" />
       </div>
       <div class="ice-cream" style="left: 88%; animation-delay: 0.2s;">
-        <img src="assets/resources/vip_Icons/epic_Icon.png" alt="ice cream" />
+        <img src="assets/resources/vip_Icons/epic_Icon.webp" alt="ice cream" width="48" height="48" />
       </div>
     </button>
+
   </div>
 </main>

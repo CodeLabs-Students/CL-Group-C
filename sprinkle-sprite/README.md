@@ -1,59 +1,19 @@
-# SprinkleSprite
+We are group C, the group members being comprised of @mdcurt, @BlueCollarGiant, and @NimCloud90, and for our Angular group project, we made an ice cream shop.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.3.
+Things of note to keep in mind: for our project we used firebase for our backend so data like our ice cream flavors and our prices are all on there, of which you will likely not have access to. We are also using the nes.css framework for said css.
 
-## Development server
+Now here's a summary of the site:
 
-To start a local development server, run:
+It's an ice cream shop with a video game like twist to it, from the design to the rewards program we wanted to make a fun and enjoyable experience that combines the deliciousness of ice cream and the fun and whimsy of video games.
 
-```bash
-ng serve
-```
+There are four pages to our website that being: the Home page, the Checkout page, the Menu page, and the Account page.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The Home page is the landing page for when you first open the site, and that's it main function.
 
-## Code scaffolding
+The Account page is where you can make an account on the site or if you've already made an account it'll let you sign on into said account. That data is stored locally however and isn't part of the backend. It has both a Favorites and an Address section but those aren't in use currently. The VIP membership section showcases the XP system and rewards beside on your rank, it also shows you the different ways you are able to gain XP. There's also a button that'll take you to the menu to start shopping.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The Menu and Checkout go hand and hand. In the Menu you're able to browse around, add items to a cart and allows you to add as much or as little to the cart. The ice cream flavors are comprised of cards are dynamically generated from data pulled from our backend. On the cards is the name of the ice cream and if you click on the card, it'll extend so you can see a description of the flavor, the price, and the rarity of the ice cream (which is a way to gain XP points).
 
-```bash
-ng generate component component-name
-```
+The Checkout pulls the card data (the ice cream, the price, how much your buying, ect) and drags it to the checkout where it'll calculate the overall total of what the customer is buying. Also we placed some seasonal ice cream at checkout as well.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+And that's about it.
