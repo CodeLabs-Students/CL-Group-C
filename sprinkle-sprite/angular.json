@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/sprinkle-sprite",
+            "outputPath": "dist/sprinkle-sprite-demo",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -46,7 +46,16 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                }
+              },
+              "extractLicenses": true,
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
